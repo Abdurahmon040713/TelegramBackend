@@ -62,8 +62,7 @@ pandas==2.3.3
 parso==0.8.3
 pillow==10.3.0
 prompt-toolkit==3.0.43
-psycopg2==2.9.10
-psycopg2-binary==2.9.9
+psycopg2-binary==2.9.10
 pure-eval==0.2.2
 py3dbp==1.1.2
 pyaes==1.6.1
