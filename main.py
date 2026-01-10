@@ -61,15 +61,19 @@ NEGATIVE_KEYWORDS = load_negative_words()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await database.connect()
-
-    global sentiment_analyzer
-    sentiment_analyzer = pipeline(
-        "text-classification",
-        model="distilbert-base-uncased-finetuned-sst-2-english"
-    )
-
     yield
     await database.disconnect()
+
+# 7. Yordamchi funksiyani o'zgartiring
+def analyze_text_sync(text: str):
+    global sentiment_analyzer
+    # Model faqat funksiya chaqirilganda yuklanadi
+    if sentiment_analyzer is None:
+        sentiment_analyzer = pipeline(
+            "text-classification", 
+            model="distilbert-base-uncased-finetuned-sst-2-english"
+        )
+    return sentiment_analyzer(text[:512])[0]
 
 # -------------------------
 # 5. App
