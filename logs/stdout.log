@@ -1,0 +1,9 @@
+INFO:     127.0.0.1:56393 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56393 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57507 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54513 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54513 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54513 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54513 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54513 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54513 - "GET /openapi.json HTTP/1.1" 200 OK
