@@ -137,13 +137,13 @@ async def get_client_session(phone: str):
     return client
 
 def analyze_text_sync(text: str):
-    global sentiment_analyzer
+    # global sentiment_analyzer
     # Model faqat funksiya chaqirilganda yuklanadi
-    if sentiment_analyzer is None:
-        sentiment_analyzer = pipeline(
-            "text-classification", 
-            model="distilbert-base-uncased-finetuned-sst-2-english"
-        )
+    # if sentiment_analyzer is None:
+    #     sentiment_analyzer = pipeline(
+    #         "text-classification", 
+    #         model="distilbert-base-uncased-finetuned-sst-2-english"
+    #     )
     return sentiment_analyzer(text[:512])[0]
 
 # -------------------------
