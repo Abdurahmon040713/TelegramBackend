@@ -267,3 +267,9 @@ async def analyze(data: AnalyzeRequest):
 
     finally:
         await client.disconnect()
+
+if __name__ == "__main__":
+    import uvicorn
+    # Render avtomatik beradigan PORT ni oladi, bo'lmasa 10000 ni ishlatadi
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
