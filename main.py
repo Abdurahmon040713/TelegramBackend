@@ -144,6 +144,12 @@ async def get_client_session(phone: str):
     return client
 
 def analyze_text_sync(text: str):
+    global sentiment_analyzer
+    if sentiment_analyzer is None:
+        sentiment_analyzer = pipeline(
+            "text-classification",
+            model="distilbert-base-uncased-finetuned-sst-2-english"
+        )
     return sentiment_analyzer(text[:512])[0]
 
 # -------------------------
