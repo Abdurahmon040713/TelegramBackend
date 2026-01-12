@@ -5,23 +5,18 @@ import os
 from contextlib import asynccontextmanager
 from typing import List, Optional
 import logging
-
-from fastapi import FastAPI, HTTPException
+logging.basicConfig(level=logging.INFO)
 from pydantic import BaseModel
 from telethon import TelegramClient, errors
 from telethon.sessions import StringSession
 from sqlalchemy import Column, Integer, String, Table, MetaData, create_engine
 from databases import Database
 from transformers import pipeline
-from dotenv import load_dotenv
-from sqlalchemy.dialects.postgresql import insert
+from db import DATABASE_URL
 
 # -------------------------
 # 1. Konfiguratsiya
 # -------------------------
-load_dotenv()
-
-DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL .env faylida topilmadi")
 
@@ -50,8 +45,12 @@ sentiment_analyzer = None
 # 3. Negativ so‘zlar
 # -------------------------
 def load_negative_words(file_path: str = "data/uz_negative_words.txt"):
-    with open(file_path, "r", encoding="utf-8") as f:
-        return [line.strip().lower() for line in f if line.strip()]
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            return [line.strip().lower() for line in f if line.strip()]
+    except FileNotFoundError:
+        logging.warning(f"Negative words file not found: {file_path}")
+        return []
 
 NEGATIVE_KEYWORDS = load_negative_words()
 
@@ -101,6 +100,9 @@ class AnalyzeRequest(BaseModel):
     chat_id: int
     limit: int = 50
 
+class PhoneRequest(BaseModel):
+    phone: str
+
 class NegativeMessage(BaseModel):
     id: int
     text: str
@@ -137,13 +139,13 @@ async def get_client_session(phone: str):
     return client
 
 def analyze_text_sync(text: str):
-    # global sentiment_analyzer
+    global sentiment_analyzer
     # Model faqat funksiya chaqirilganda yuklanadi
-    # if sentiment_analyzer is None:
-    #     sentiment_analyzer = pipeline(
-    #         "text-classification", 
-    #         model="distilbert-base-uncased-finetuned-sst-2-english"
-    #     )
+    if sentiment_analyzer is None:
+        sentiment_analyzer = pipeline(
+            "text-classification", 
+            model="distilbert-base-uncased-finetuned-sst-2-english"
+        )
     return sentiment_analyzer(text[:512])[0]
 
 # -------------------------
@@ -153,36 +155,48 @@ def analyze_text_sync(text: str):
 async def read_root():
     return {"message": "Backend ishlayapti!"}
 
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
 @app.post("/login")
 async def login(data: LoginRequest):
     client = TelegramClient(StringSession(), data.api_id, data.api_hash)
     await client.connect()
-
     try:
         sent = await client.send_code_request(data.phone)
         session_string = client.session.save()
 
-        query = insert(sessions).values(
-            phone=data.phone,
-            api_id=data.api_id,
-            api_hash=data.api_hash,
-            session_string=session_string
-        ).on_conflict_do_update(
-            index_elements=[sessions.c.phone],
-            set_={
-                "api_id": data.api_id,
-                "api_hash": data.api_hash,
-                "session_string": session_string
-            }
-        )
-
-        await database.execute(query)
+        # Portable upsert: agar telefon bo'lsa yangilaymiz, aks holda qo'shamiz
+        existing_query = sessions.select().where(sessions.c.phone == data.phone)
+        existing = await database.fetch_one(existing_query)
+        if existing:
+            await database.execute(
+                sessions.update()
+                .where(sessions.c.phone == data.phone)
+                .values(api_id=data.api_id, api_hash=data.api_hash, session_string=session_string)
+            )
+        else:
+            await database.execute(
+                sessions.insert().values(
+                    phone=data.phone,
+                    api_id=data.api_id,
+                    api_hash=data.api_hash,
+                    session_string=session_string
+                )
+            )
 
         return {
             "status": "waiting_for_code",
             "phone_code_hash": sent.phone_code_hash
         }
 
+    except errors.RPCError as e:
+        logging.exception("Telethon RPC error during /login")
+        raise HTTPException(status_code=502, detail=str(e))
+    except Exception as e:
+        logging.exception("Unexpected error during /login")
+        raise HTTPException(status_code=500, detail="Internal server error")
     finally:
         await client.disconnect()
 
@@ -217,12 +231,18 @@ async def verify(data: VerifyRequest):
         )
 
         return {"status": "success"}
-
+    except errors.RPCError as e:
+        logging.exception("Telethon RPC error during /verify")
+        raise HTTPException(status_code=502, detail=str(e))
+    except Exception as e:
+        logging.exception("Unexpected error during /verify")
+        raise HTTPException(status_code=500, detail="Internal server error")
     finally:
         await client.disconnect()
 
 @app.post("/chats")
-async def get_chats(phone: str):
+async def get_chats(data: PhoneRequest):
+    phone = data.phone
     client = await get_client_session(phone)
 
     try:
@@ -270,6 +290,6 @@ async def analyze(data: AnalyzeRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    # Render avtomatik beradigan PORT ni oladi, bo'lmasa 10000 ni ishlatadi
-    port = int(os.environ.get("PORT", 10000))
+    # Render avtomatik beradigan PORT ni oladi, bo'lmasa 8000 ni ishlatadi
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
