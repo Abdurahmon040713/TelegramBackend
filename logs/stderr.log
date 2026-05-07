@@ -1,0 +1,2189 @@
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6400]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Finished server process [6400]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6148]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Finished server process [6148]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6032]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:     Finished server process [6032]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [8120]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Finished server process [8120]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5940]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Finished server process [5940]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6516]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:     Finished server process [6516]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6388]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [19300]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [3192]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [19976]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24380]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [13068]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5380]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5932]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25136]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10844]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11968]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22900]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [17288]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10276]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [4760]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16500]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [20488]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [14096]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 11703f77-e8ae-456a-85df-7348520c20d7)')' thrown while requesting HEAD https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+WARNING:huggingface_hub.utils._http:'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 11703f77-e8ae-456a-85df-7348520c20d7)')' thrown while requesting HEAD https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+Retrying in 1s [Retry 1/5].
+WARNING:huggingface_hub.utils._http:Retrying in 1s [Retry 1/5].
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11296]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6464]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6032]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23424]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [2764]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24104]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [19480]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [14072]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22692]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [17176]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10644]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5992]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23612]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [14896]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [21016]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [21260]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [2448]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11604]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22804]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16468]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [1236]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [12152]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [13552]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7388]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10448]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11992]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [4952]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [2988]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7940]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [18580]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [12852]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [4164]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22720]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [4228]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24180]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7996]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [18116]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10556]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16768]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [2148]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24308]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16408]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11344]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [13344]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23236]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [15220]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [2464]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10396]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25572]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [20008]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25244]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7380]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7372]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7636]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7772]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24788]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23688]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [21616]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23108]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [14468]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [21204]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [12752]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24008]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16976]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [17004]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [19400]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [17916]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25020]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [18128]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11936]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11696]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [20012]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [14008]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24552]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6252]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [21004]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [18288]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [8068]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16396]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22988]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [3488]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22932]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [8048]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [15188]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [3476]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10040]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [19696]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24268]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [21616]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [6216]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [4228]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25064]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23196]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+'(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000015B44C3A960>: Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 7e304abb-557c-4a0c-b61c-0119f4b39d6f)')' thrown while requesting HEAD https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+WARNING:huggingface_hub.utils._http:'(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000015B44C3A960>: Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 7e304abb-557c-4a0c-b61c-0119f4b39d6f)')' thrown while requesting HEAD https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+Retrying in 1s [Retry 1/5].
+WARNING:huggingface_hub.utils._http:Retrying in 1s [Retry 1/5].
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [21352]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11996]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10328]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5792]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [17196]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [9168]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16328]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [968]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11336]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [4112]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [14024]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [15504]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [16084]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [2428]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [20124]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [12372]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [8808]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [15856]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [12852]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7476]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25116]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [15528]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23692]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5668]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [3516]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [8948]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23052]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22648]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7752]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22604]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24164]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [8452]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [19480]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10504]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5332]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7884]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7144]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [4228]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [11604]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25580]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [2580]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25364]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [13192]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [17620]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [13064]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [1216]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [24104]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22184]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [20652]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [10060]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 8000): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [22652]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [1780]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [23200]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Finished server process [23200]

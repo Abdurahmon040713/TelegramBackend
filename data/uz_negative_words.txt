@@ -1,10 +1,203 @@
+--- Haqorat, so'kinish va tahqirlash ---
+
+ablah
 ahmoq
-tentak
-dangasa
-pastkash
-qo‘pol
-yaramas
-xoin
+am
+amchik
+ami
+basharangni
+betavfiq
+blyad
+bo'q
+chmo
+chort
+dabba
+dalbayob
+eshak
+fohisha
+gandon
+gey
+gondon
+haromi
+haromzoda
+hayvon
 iflos
-harom
-sharmanda
+itdan tarqagan
+itvachcha
+jalab
+jalap
+jinni
+jinnivoy
+kallangni
+kaltafahm
+kofir
+ko't
+ko'tinga
+ko'tingni
+lallaygan
+la'nati
+lox
+malol
+maraz
+miyasiz
+mol
+muttaham
+nomard
+onangni
+oneni
+opangni
+padaringni
+padarla'nat
+pastkash
+pederast
+petux
+pidar
+pidaraz
+qanjiq
+qashqir
+qotaq
+qotagim
+qotoq
+razil
+sassiq
+sasyot
+sikaman
+siktir
+singlingni
+skatin
+skman
+surqa
+telba
+tentak
+teshik
+tupoy
+xarom
+xaromi
+xunasa
+yaramas
+yuzsiz
+
+--- Firibgarlik, Spam va Reklama ---
+
+1xbet
+aksiya
+aldov
+avtomobil yutib oling
+a'zo bo'ling
+azart
+bepul
+bonus
+bonus oling
+bot orqali
+botga kiring
+chegirma
+click
+daromad
+daromad qilish
+firibgar
+giveaway
+giveavey
+guruhga qo'shiling
+hamkorlik
+humo
+investitsiya
+iphone yutib oling
+kanalga o'ting
+kanalga ulaning
+kazino
+kazinoga
+kiring va yuting
+konkurs
+kriptovalyuta
+layk bosing
+link ustiga bosing
+lotereya
+loto
+maxfiy kod
+nakrutka
+obuna bo'ling
+obunachi ko'paytirish
+oson pul
+parolni bering
+payme
+pin kod
+plastik karta
+podpiska
+premium tekin
+prosmotr
+pul ishlash
+qimor
+referal
+referal link
+reklama
+ro'yxatdan o'ting
+ruletka
+sarmoya
+sarmoya kiriting
+sarmoyasiz
+sarmoyasiz pul
+silka
+skam
+ssilka
+stavka
+tarmoqli marketing
+tarqating
+tekin
+tekin premium
+tekinga pul
+tezkor to'lov
+tikish
+uzcard
+xakker
+yolg'onchi
+yutib oling
+yutuq
+
+--- Diniy va siyosiy ekstremizm, Zo'ravonlik ---
+
+al qoida
+avtomat
+bid'at
+bomba
+davlat to'ntarishi
+hijrat
+hizb
+inqilob
+ishid
+islomiy davlat
+jihod
+kofir
+miting
+mujohid
+murtad
+mushrik
+namoyish
+o'ldirish
+pichoqlab
+portlatish
+qatl
+qonini to'kish
+qo'zg'olon
+qurol
+radikal
+shahid
+terakt
+terror
+terrorchi
+tog'ut
+togut
+xalifa
+xalifalik
+
+--- Kattalar uchun (18+) va Behayolik ---
+
+porno
+porn
+seks
+sex
+jinsiy
+yalang'och
+intim
+fohishaxona
+eskort
+qizlar raqami

@@ -1,0 +1,921 @@
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [25168]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Disconnecting from 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Disconnection from 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for channel 1379954190 updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 1236] The network connection was aborted by the local system
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 1236] The network connection was aborted by the local system
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 1236] The network connection was aborted by the local system
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 1236] The network connection was aborted by the local system
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+WARNING:telethon.network.mtprotostate:Server resent the older message 7634059208667264001, ignoring
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for channel 1705358803 updates
+INFO:telethon.client.updates:Got difference for channel 1705358803 updates
+WARNING:telethon.network.mtprotostate:Server resent the older message 7634059208570570753, ignoring
+INFO:telethon.client.updates:Got difference for channel 1705358803 updates
+INFO:telethon.client.updates:Got difference for channel 1705358803 updates
+INFO:telethon.client.updates:Got difference for channel 1337985732 updates
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for channel 1337985732 updates
+INFO:telethon.client.updates:Got difference for channel 1337985732 updates
+INFO:telethon.client.updates:Got difference for channel 1337985732 updates
+INFO:telethon.client.updates:Got difference for channel 1705358803 updates
+INFO:telethon.client.updates:Got difference for channel 1379954190 updates
+INFO:telethon.network.connection.connection:The server closed the connection while sending
+INFO:telethon.network.connection.connection:The server closed the connection while sending
+INFO:telethon.network.connection.connection:The server closed the connection while sending
+INFO:telethon.network.connection.connection:The server closed the connection while sending
+INFO:telethon.network.connection.connection:The server closed the connection while sending
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 10053] An established connection was aborted by the software in your host machine
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 10053] An established connection was aborted by the software in your host machine
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 10053] An established connection was aborted by the software in your host machine
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 10053] An established connection was aborted by the software in your host machine
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 10053] An established connection was aborted by the software in your host machine
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1232] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 1 with ConnectionError
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 2 with ConnectionError
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 3 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 3 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 3 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 3 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 3 with ConnectionError
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 4 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 4 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 4 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 4 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 4 with ConnectionError
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 5 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 6 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 5 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 5 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 5 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 5 with ConnectionError
+INFO:telethon.network.mtprotosender:Failed reconnection attempt 5 with ConnectionError
+ERROR:telethon.network.mtprotosender:Automatic reconnection failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnecting from 149.154.167.51:443/TcpFull...
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=ConnectionError('Connection to Telegram failed 5 time(s)')>
+ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnection from 149.154.167.51:443/TcpFull complete!
+ERROR:telethon.network.mtprotosender:Automatic reconnection failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnecting from 149.154.167.51:443/TcpFull...
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=ConnectionError('Connection to Telegram failed 5 time(s)')>
+ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnection from 149.154.167.51:443/TcpFull complete!
+ERROR:telethon.network.mtprotosender:Automatic reconnection failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnecting from 149.154.167.51:443/TcpFull...
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=ConnectionError('Connection to Telegram failed 5 time(s)')>
+ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnection from 149.154.167.51:443/TcpFull complete!
+ERROR:telethon.network.mtprotosender:Automatic reconnection failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnecting from 149.154.167.51:443/TcpFull...
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=ConnectionError('Connection to Telegram failed 5 time(s)')>
+ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnection from 149.154.167.51:443/TcpFull complete!
+ERROR:telethon.network.mtprotosender:Automatic reconnection failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnecting from 149.154.167.51:443/TcpFull...
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=ConnectionError('Connection to Telegram failed 5 time(s)')>
+ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.network.mtprotosender:Disconnection from 149.154.167.51:443/TcpFull complete!
+WARNING:telethon.client.updates:Error executing high-level request after reconnect: <class 'ConnectionError'>: Connection to Telegram failed 5 time(s)
+INFO:telethon.client.updates:Cannot get difference since the network is down: ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.client.updates:Cannot get difference since the network is down: ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.client.updates:Cannot get difference since the network is down: ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:telethon.client.updates:Cannot get difference since the network is down: ConnectionError: Connection to Telegram failed 5 time(s)
+WARNING:telethon.client.updates:Error executing high-level request after reconnect: <class 'ConnectionError'>: Connection to Telegram failed 5 time(s)
+INFO:telethon.client.updates:Cannot get difference since the network is down: ConnectionError: Connection to Telegram failed 5 time(s)
+INFO:     Shutting down
+INFO:     Finished server process [25168]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [7160]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:databases:Disconnected from database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7160]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [8524]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Finished server process [8524]
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+INFO:     Started server process [5240]
+INFO:     Waiting for application startup.
+INFO:databases:Connected to database postgresql://postgres:********@localhost:5432/telegram_app
+INFO:main:AI Model yuklanmoqda... (Bu biroz vaqt olishi mumkin)
+Device set to use cpu
+INFO:main:AI Model muvaffaqiyatli yuklandi!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Disconnecting from 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Disconnection from 149.154.167.51:443/TcpFull complete!
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for channel 1337985732 updates
+WARNING:telethon.network.connection.connection:Server closed the connection: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connection closed while receiving data: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Closing current connection to begin reconnect...
+INFO:telethon.network.connection.connection:<class 'ConnectionAbortedError'> during disconnect: [WinError 1236] The network connection was aborted by the local system
+INFO:telethon.network.mtprotosender:Connecting to 149.154.167.51:443/TcpFull...
+WARNING:telethon.network.mtprotosender:Attempt 1 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 2 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 3 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+WARNING:telethon.network.mtprotosender:Attempt 4 at connecting failed: OSError: [WinError 1231] The network location cannot be reached. For information about network troubleshooting, see Windows Help
+INFO:telethon.network.mtprotosender:Connection to 149.154.167.51:443/TcpFull complete!
+INFO:telethon.client.updates:Got difference for account updates
+INFO:telethon.client.updates:Got difference for account updates
+ERROR:asyncio:Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:telethon.client.updates:Got difference for channel 1169511702 updates
+INFO:telethon.client.updates:Got difference for channel 1379954190 updates
+INFO:     Shutting down
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1082, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 423, in main
+    run(
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 593, in run
+    server.run()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 71, in serve
+    await self._serve(sockets)
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 78, in _serve
+    config.load()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\main.py", line 20, in <module>
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+ModuleNotFoundError: No module named 'slowapi'
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1082, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 423, in main
+    run(
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 593, in run
+    server.run()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 71, in serve
+    await self._serve(sockets)
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 78, in _serve
+    config.load()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\main.py", line 20, in <module>
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+ModuleNotFoundError: No module named 'slowapi'
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1082, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 423, in main
+    run(
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 593, in run
+    server.run()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 71, in serve
+    await self._serve(sockets)
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 78, in _serve
+    config.load()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\main.py", line 20, in <module>
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+ModuleNotFoundError: No module named 'slowapi'
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1082, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 423, in main
+    run(
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 593, in run
+    server.run()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 71, in serve
+    await self._serve(sockets)
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 78, in _serve
+    config.load()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\main.py", line 20, in <module>
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+ModuleNotFoundError: No module named 'slowapi'
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1082, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 423, in main
+    run(
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 593, in run
+    server.run()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 71, in serve
+    await self._serve(sockets)
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 78, in _serve
+    config.load()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\main.py", line 20, in <module>
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+ModuleNotFoundError: No module named 'slowapi'
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1082, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 423, in main
+    run(
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 593, in run
+    server.run()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 71, in serve
+    await self._serve(sockets)
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 78, in _serve
+    config.load()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\main.py", line 20, in <module>
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+ModuleNotFoundError: No module named 'slowapi'
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1082, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\click\core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 423, in main
+    run(
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\main.py", line 593, in run
+    server.run()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 71, in serve
+    await self._serve(sockets)
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\server.py", line 78, in _serve
+    config.load()
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 22, in import_from_string
+    raise exc from None
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DC-comic\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 994, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\DC-comic\Desktop\4\loyha\TelegramBackend\main.py", line 20, in <module>
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+ModuleNotFoundError: No module named 'slowapi'
+INFO:telethon.crypto.libssl:Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+INFO:telethon.crypto.aes:cryptg module not installed and libssl not found, falling back to (slower) Python encryption
