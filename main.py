@@ -2,9 +2,11 @@ from fastapi import FastAPI, Depends, HTTPException, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
 import os
+import random
 import re
 import time
 from contextlib import asynccontextmanager
+from enum import Enum
 from typing import Any, Dict, List, Optional, Tuple
 import logging
 import jwt
@@ -14,7 +16,7 @@ from uuid import uuid4
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, Field, field_validator
 from telethon import TelegramClient, errors
 from telethon.sessions import StringSession
 from sqlalchemy import Column, Integer, String, Table, MetaData, create_engine
@@ -152,9 +154,9 @@ def build_keyword_pattern(keyword: str) -> re.Pattern:
 
 
 def is_toxic_by_keywords(text: str) -> bool:
-    text = text.lower()
+    text_lower = text.lower()
     for pattern in KEYWORD_PATTERNS:
-        if pattern.search(text):
+        if pattern.search(text_lower):
             return True
     return False
 
@@ -204,6 +206,10 @@ async def lifespan(app: FastAPI):
 # -------------------------
 # 5. App
 # -------------------------
+def get_allowed_origins() -> List[str]:
+    origins_str = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000")
+    return [o.strip() for o in origins_str.split(",") if o.strip()]
+
 app = FastAPI(
     title="Telegram Sentiment Backend",
     lifespan=lifespan
@@ -211,7 +217,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(","),
+    allow_origins=get_allowed_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -230,13 +236,15 @@ class LoginRequest(BaseModel):
     api_hash: str
     phone: str
     
-    @validator('api_id')
+    @field_validator('api_id')
+    @classmethod
     def api_id_positive(cls, v):
         if v <= 0:
             raise ValueError('API ID musbat bo\'lishi kerak')
         return v
     
-    @validator('api_hash')
+    @field_validator('api_hash')
+    @classmethod
     def api_hash_not_empty(cls, v):
         if not v or len(v) < 10:
             raise ValueError('API Hash juda qisqa')
@@ -249,7 +257,8 @@ class VerifyRequest(BaseModel):
     api_id: int
     api_hash: str
     
-    @validator('code')
+    @field_validator('code')
+    @classmethod
     def code_valid(cls, v):
         if not v or len(v) < 3:
             raise ValueError('Kod juda qisqa')
@@ -260,7 +269,8 @@ class AnalyzeRequest(BaseModel):
     chat_id: int
     limit: int = 50
     
-    @validator('limit')
+    @field_validator('limit')
+    @classmethod
     def limit_valid(cls, v):
         if v <= 0 or v > 1000:
             raise ValueError('Limit 1 dan 1000 gacha bo\'lishi kerak')
@@ -269,12 +279,16 @@ class AnalyzeRequest(BaseModel):
 class PhoneRequest(BaseModel):
     phone: str
 
+class MessageReason(str, Enum):
+    KEYWORD_MATCH = "keyword_match"
+    AI_SENTIMENT = "ai_sentiment"
+
 class NegativeMessage(BaseModel):
     id: int
     text: str
-    confidence: float = 0.0
+    confidence: float = Field(ge=0.0, le=1.0)
     sender_id: Optional[int] = None
-    reason: str
+    reason: MessageReason
 
 class AnalyzeResponse(BaseModel):
     analyzed_count: int
@@ -286,9 +300,8 @@ class AnalyzeResponse(BaseModel):
 # -------------------------
 def validate_phone(phone: str) -> bool:
     """Phone raqamni validatsiya qiladi"""
-    # Minimal validation: hech bo'lmaganda 10 ta raqam bo'lishi kerak
     digits_only = re.sub(r'\D', '', phone)
-    return len(digits_only) >= 10
+    return 10 <= len(digits_only) <= 15
 
 
 async def is_client_healthy(client: TelegramClient) -> bool:
@@ -312,9 +325,9 @@ async def is_client_healthy(client: TelegramClient) -> bool:
 
 def calculate_backoff_delay(attempt: int) -> float:
     """Calculate exponential backoff delay with jitter (EXPONENTIAL BACKOFF)."""
-    # Formula: min(base * 2^attempt + random_jitter, max)
-    delay = min(BACKOFF_BASE * (2 ** attempt) + (asyncio.get_event_loop().time() % 1), BACKOFF_MAX)
-    return delay
+    base_delay = min(BACKOFF_BASE * (2 ** attempt), BACKOFF_MAX)
+    jitter = random.uniform(0, 1)
+    return min(base_delay + jitter, BACKOFF_MAX)
 
 
 async def connect_with_retry(client: TelegramClient, phone: str, max_attempts: int = MAX_RETRY_ATTEMPTS) -> bool:
@@ -337,21 +350,23 @@ async def connect_with_retry(client: TelegramClient, phone: str, max_attempts: i
 
 async def get_client_session(phone: str) -> TelegramClient:
     """TelegramClient ni keshdan oladi yoki bazadan o'qib yangi ulanish yaratadi (THREAD-SAFE + HEALTH CHECK)."""
-    # Check cache first with health check
+    client: Optional[TelegramClient] = None
     async with active_clients_lock:
         if phone in active_clients:
             client = active_clients[phone]
-            if await is_client_healthy(client):
-                logger.debug(f"\u2713 Using cached healthy client for {phone}")
-                return client
-            else:
-                # Remove unhealthy client from cache
-                logger.warning(f"Cached client for {phone} is unhealthy, removing from pool")
-                try:
-                    await active_clients[phone].disconnect()
-                except:
-                    pass
-                active_clients.pop(phone, None)
+
+    if client is not None:
+        if await is_client_healthy(client):
+            logger.debug(f"\u2713 Using cached healthy client for {phone}")
+            return client
+
+        logger.warning(f"Cached client for {phone} is unhealthy, removing from pool")
+        try:
+            await client.disconnect()
+        except Exception:
+            pass
+        async with active_clients_lock:
+            active_clients.pop(phone, None)
 
     # Fetch from database
     query = sessions.select().where(sessions.c.phone == phone)
@@ -403,7 +418,7 @@ async def get_cached_analysis(cache_key: str) -> Optional[Dict[str, Any]]:
         entry = analysis_cache.get(cache_key)
         if not entry:
             return None
-        if entry["expiry"] < time.time():
+        if entry["expiry"] < time.monotonic():
             analysis_cache.pop(cache_key, None)
             return None
         return entry["data"]
@@ -413,7 +428,7 @@ async def set_cached_analysis(cache_key: str, data: Dict[str, Any]) -> None:
     async with cache_lock:
         analysis_cache[cache_key] = {
             "data": data,
-            "expiry": time.time() + CACHE_TTL_SECONDS,
+            "expiry": time.monotonic() + CACHE_TTL_SECONDS,
         }
 
 
@@ -425,20 +440,25 @@ async def execute_with_client_retry(client: TelegramClient, operation, phone: st
         except (errors.ConnectionError, errors.RPCError, asyncio.TimeoutError) as e:
             if attempt < max_retries - 1:
                 logger.warning(f"Client operation failed for {phone} (attempt {attempt + 1}), reconnecting: {type(e).__name__}")
-                # Disconnect and reconnect
                 try:
                     await client.disconnect()
-                except:
+                except Exception:
                     pass
-                if await connect_with_retry(client, phone):
-                    continue
-                else:
+
+                try:
+                    client = await get_client_session(phone)
+                except HTTPException:
+                    raise
+                except Exception as reconnect_error:
+                    logger.error(f"Reconnection failed for {phone}: {reconnect_error}")
                     raise HTTPException(status_code=502, detail="Telegram serveriga qayta ulanib bo'lmadi")
+
+                continue
             else:
                 logger.error(f"Client operation failed after {max_retries} attempts for {phone}: {type(e).__name__}")
                 raise HTTPException(status_code=502, detail="Telegram bilan bog'lanishda uzluksizlik yuz berdi")
 
-async def verify_token(authorization: str = Header(None)) -> str:
+def verify_token(authorization: str = Header(None)) -> str:
     """JWT token'ni tekshirib, phone'ni qaytaradi (SECURE)."""
     if not authorization:
         raise HTTPException(status_code=401, detail="Authorization talab qilinadi")
@@ -447,7 +467,7 @@ async def verify_token(authorization: str = Header(None)) -> str:
     if not authorization.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Noto'g'ri token formati")
     
-    token = authorization[7:]  # "Bearer " ni olib tashlash
+    token = authorization[7:]
     
     try:
         payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
@@ -459,13 +479,6 @@ async def verify_token(authorization: str = Header(None)) -> str:
     except jwt.InvalidTokenError as e:
         logger.warning(f"Invalid token: {e}")
         raise HTTPException(status_code=401, detail="Noto'g'ri token")
-    
-    # Phone mavjudligini tekshirish
-    query = sessions.select().where(sessions.c.phone == phone)
-    user = await database.fetch_one(query)
-    if not user:
-        raise HTTPException(status_code=401, detail="Noto'g'ri token")
-    
     return phone
 
 
@@ -489,8 +502,14 @@ def create_access_token(phone: str, expires_delta: Optional[timedelta] = None) -
 def analyze_texts_batch(texts: List[str]):
     """Matnlarni bittalab emas, birdaniga (batch) ko'rinishda analiz qiladi."""
     global sentiment_analyzer
-    # truncation=True qismi textni avtomat tokenlarga moslab qirqib beradi
-    return sentiment_analyzer(texts, truncation=True, max_length=512)
+    if not sentiment_analyzer:
+        raise ValueError("AI model yuklanmadi")
+
+    try:
+        return sentiment_analyzer(texts, truncation=True, max_length=512)
+    except Exception as e:
+        logger.error(f"Batch analysis failed: {e}")
+        raise
 
 # -------------------------
 # 8. Endpointlar
@@ -573,9 +592,11 @@ async def login(request: Request, data: LoginRequest):
         logger.exception(f"Unexpected error in /login: {e}")
         raise HTTPException(status_code=500, detail="Noma'lum xatolik yuz berdi")
     finally:
-        # Cleanup: temporary connection
-        if client.is_connected():
-            await client.disconnect()
+        try:
+            if client.is_connected():
+                await client.disconnect()
+        except Exception as cleanup_err:
+            logger.warning(f"Login cleanup failed: {cleanup_err}")
 
 @app.post("/verify")
 @limiter.limit("5/minute")  # CRITICAL: Prevent brute force
@@ -590,6 +611,9 @@ async def verify(request: Request, data: VerifyRequest):
     if not user:
         raise HTTPException(status_code=404, detail="Login qilinmagan - avval /login qiling")
 
+    if user["api_id"] != data.api_id or user["api_hash"] != data.api_hash:
+        raise HTTPException(status_code=401, detail="API credentials mismatch")
+
     try:
         session_string = decrypt_session_string(user["session_string"])
     except ValueError as e:
@@ -598,8 +622,8 @@ async def verify(request: Request, data: VerifyRequest):
     
     client = TelegramClient(
         StringSession(session_string),
-        data.api_id,
-        data.api_hash,
+        user["api_id"],
+        user["api_hash"],
         timeout=TELETHON_CONNECTION_TIMEOUT,
         connection_retries=TELETHON_RETRIES,
         retry_delay=TELETHON_RETRY_DELAY
@@ -752,16 +776,22 @@ async def analyze(request: Request, data: AnalyzeRequest, authenticated_phone: s
                 raise HTTPException(status_code=500, detail="Xabarlarni olishda xatolik yuz berdi")
 
             if not messages:
-                return {"analyzed_count": 0, "negative_count": 0, "negative_messages": []}
+                return AnalyzeResponse(
+                    analyzed_count=0,
+                    negative_count=0,
+                    negative_messages=[]
+                )
 
+            negative_ids = set()
             for msg in messages:
                 if is_toxic_by_keywords(msg.text):
+                    negative_ids.add(msg.id)
                     negative_messages.append({
                         "id": msg.id,
                         "text": msg.text,
                         "confidence": 0.0,
                         "sender_id": msg.sender_id,
-                        "reason": "keyword_match"
+                        "reason": MessageReason.KEYWORD_MATCH
                     })
                 else:
                     uncertain_messages.append(msg)
@@ -774,26 +804,28 @@ async def analyze(request: Request, data: AnalyzeRequest, authenticated_phone: s
                         for msg, result in zip(uncertain_messages, results):
                             score = float(result.get("score", 0.0))
                             if result.get("label") == "NEGATIVE" and score > AI_NEGATIVE_SCORE_THRESHOLD:
-                                negative_messages.append({
-                                    "id": msg.id,
-                                    "text": msg.text,
-                                    "confidence": score,
-                                    "sender_id": msg.sender_id,
-                                    "reason": "ai_sentiment"
-                                })
+                                if msg.id not in negative_ids:
+                                    negative_ids.add(msg.id)
+                                    negative_messages.append({
+                                        "id": msg.id,
+                                        "text": msg.text,
+                                        "confidence": score,
+                                        "sender_id": msg.sender_id,
+                                        "reason": MessageReason.AI_SENTIMENT
+                                    })
                     except Exception:
                         logger.exception("AI modeli bilan tahlil davomida xato yuz berdi, fallback faqat keyword-based tahlil ishlatiladi")
                 else:
                     logger.info("AI modeli mavjud emas, faqat keyword-based tahlil ishlatiladi")
 
-            return {
-                "analyzed_count": len(messages),
-                "negative_count": len(negative_messages),
-                "negative_messages": negative_messages
-            }
+            return AnalyzeResponse(
+                analyzed_count=len(messages),
+                negative_count=len(negative_messages),
+                negative_messages=negative_messages
+            )
         
         result = await execute_with_client_retry(client, analyze_operation, data.phone)
-        await set_cached_analysis(cache_key, result)
+        await set_cached_analysis(cache_key, result.model_dump())
         return result
     except HTTPException:
         raise
