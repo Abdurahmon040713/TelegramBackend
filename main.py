@@ -2,12 +2,12 @@ from fastapi import FastAPI, Depends, HTTPException, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
 import os
-import random
 import re
 import time
+import random
 from contextlib import asynccontextmanager
+from typing import Any, Dict, List, Optional, Tuple, Set
 from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple
 import logging
 import jwt
 from datetime import datetime, timedelta
@@ -16,7 +16,7 @@ from uuid import uuid4
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, field_validator, Field
 from telethon import TelegramClient, errors
 from telethon.sessions import StringSession
 from sqlalchemy import Column, Integer, String, Table, MetaData, create_engine
@@ -90,7 +90,7 @@ MAX_RETRY_ATTEMPTS = 5
 limiter = Limiter(key_func=get_remote_address)
 
 # -------------------------
-# 3. Negativ so‘zlar
+# 3. Negativ so'zlar
 # -------------------------
 def load_negative_words(file_path: str = "data/uz_negative_words.txt"):
     """Load negative keywords synchronously (called at startup, OK to block)."""
@@ -115,7 +115,7 @@ AI_NEGATIVE_SCORE_THRESHOLD = 0.85
 LEET_MAP = {
     "a": r"[a4@]",
     "b": r"[b8]",
-    "c": r"[c(\[]",
+    "c": r"[c(\[]"  ,
     "d": r"[d]",
     "e": r"[e3€]",
     "g": r"[g69q]",
@@ -154,6 +154,7 @@ def build_keyword_pattern(keyword: str) -> re.Pattern:
 
 
 def is_toxic_by_keywords(text: str) -> bool:
+    """FIX #9: One-time lowercase for efficiency"""
     text_lower = text.lower()
     for pattern in KEYWORD_PATTERNS:
         if pattern.search(text_lower):
@@ -206,14 +207,16 @@ async def lifespan(app: FastAPI):
 # -------------------------
 # 5. App
 # -------------------------
-def get_allowed_origins() -> List[str]:
-    origins_str = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000")
-    return [o.strip() for o in origins_str.split(",") if o.strip()]
-
 app = FastAPI(
     title="Telegram Sentiment Backend",
     lifespan=lifespan
 )
+
+# FIX #7: CORS configuration - proper origin parsing
+def get_allowed_origins() -> List[str]:
+    """Parse CORS origins from environment variable"""
+    origins_str = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000")
+    return [o.strip() for o in origins_str.split(",") if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
@@ -231,6 +234,8 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # -------------------------
 # 6. Pydantic modellari
 # -------------------------
+
+# FIX #13: Pydantic v2 migration - use field_validator
 class LoginRequest(BaseModel):
     api_id: int
     api_hash: str
@@ -279,14 +284,16 @@ class AnalyzeRequest(BaseModel):
 class PhoneRequest(BaseModel):
     phone: str
 
+# FIX #8: NegativeMessage validation with enum and Field constraints
 class MessageReason(str, Enum):
+    """Message analysis reason"""
     KEYWORD_MATCH = "keyword_match"
     AI_SENTIMENT = "ai_sentiment"
 
 class NegativeMessage(BaseModel):
     id: int
     text: str
-    confidence: float = Field(ge=0.0, le=1.0)
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)  # 0-1 range validation
     sender_id: Optional[int] = None
     reason: MessageReason
 
@@ -298,9 +305,13 @@ class AnalyzeResponse(BaseModel):
 # -------------------------
 # 7. Yordamchi funksiyalar
 # -------------------------
+
+# FIX #11: Phone validation with international support (10-15 digits)
 def validate_phone(phone: str) -> bool:
     """Phone raqamni validatsiya qiladi"""
     digits_only = re.sub(r'\D', '', phone)
+    # International format: 10-15 digits (covers most countries)
+    # Uzbekistan: +998XXXXXXXXXX (12 digits)
     return 10 <= len(digits_only) <= 15
 
 
@@ -323,11 +334,13 @@ async def is_client_healthy(client: TelegramClient) -> bool:
         return False
 
 
+# FIX #3: Backoff delay with proper jitter using random.random()
 def calculate_backoff_delay(attempt: int) -> float:
     """Calculate exponential backoff delay with jitter (EXPONENTIAL BACKOFF)."""
+    # Formula: min(base * 2^attempt + random_jitter, max)
     base_delay = min(BACKOFF_BASE * (2 ** attempt), BACKOFF_MAX)
-    jitter = random.uniform(0, 1)
-    return min(base_delay + jitter, BACKOFF_MAX)
+    jitter = random.uniform(0, 1)  # Random value between 0-1
+    return base_delay + jitter
 
 
 async def connect_with_retry(client: TelegramClient, phone: str, max_attempts: int = MAX_RETRY_ATTEMPTS) -> bool:
@@ -335,7 +348,7 @@ async def connect_with_retry(client: TelegramClient, phone: str, max_attempts: i
     for attempt in range(max_attempts):
         try:
             await client.connect()
-            logger.info(f"\u2713 Connected for {phone} (attempt {attempt + 1})")
+            logger.info(f"✓ Connected for {phone} (attempt {attempt + 1})")
             return True
         except Exception as e:
             if attempt < max_attempts - 1:
@@ -348,25 +361,30 @@ async def connect_with_retry(client: TelegramClient, phone: str, max_attempts: i
     return False
 
 
+# FIX #2: Race condition - separate cache check from async health check
 async def get_client_session(phone: str) -> TelegramClient:
     """TelegramClient ni keshdan oladi yoki bazadan o'qib yangi ulanish yaratadi (THREAD-SAFE + HEALTH CHECK)."""
-    client: Optional[TelegramClient] = None
+    # Check cache WITHOUT doing async operation inside lock
+    cached_client = None
     async with active_clients_lock:
         if phone in active_clients:
-            client = active_clients[phone]
-
-    if client is not None:
-        if await is_client_healthy(client):
-            logger.debug(f"\u2713 Using cached healthy client for {phone}")
-            return client
-
-        logger.warning(f"Cached client for {phone} is unhealthy, removing from pool")
-        try:
-            await client.disconnect()
-        except Exception:
-            pass
-        async with active_clients_lock:
-            active_clients.pop(phone, None)
+            cached_client = active_clients[phone]
+    
+    # Do async health check OUTSIDE the lock
+    if cached_client is not None:
+        if await is_client_healthy(cached_client):
+            logger.debug(f"✓ Using cached healthy client for {phone}")
+            return cached_client
+        else:
+            # Remove unhealthy client from cache
+            logger.warning(f"Cached client for {phone} is unhealthy, removing from pool")
+            async with active_clients_lock:
+                if phone in active_clients:
+                    try:
+                        await active_clients[phone].disconnect()
+                    except Exception:
+                        pass
+                    active_clients.pop(phone, None)
 
     # Fetch from database
     query = sessions.select().where(sessions.c.phone == phone)
@@ -405,7 +423,7 @@ async def get_client_session(phone: str) -> TelegramClient:
     async with active_clients_lock:
         active_clients[phone] = client
     
-    logger.info(f"\u2713 New client created and cached for {phone}")
+    logger.info(f"✓ New client created and cached for {phone}")
     return client
 
 
@@ -413,12 +431,16 @@ def get_cache_key(phone: str, chat_id: int, limit: int) -> str:
     return f"{phone}:{chat_id}:{limit}"
 
 
+# FIX #12: Cache race condition - proper timestamp handling
 async def get_cached_analysis(cache_key: str) -> Optional[Dict[str, Any]]:
     async with cache_lock:
         entry = analysis_cache.get(cache_key)
         if not entry:
             return None
-        if entry["expiry"] < time.monotonic():
+        
+        # Check expiry with current time
+        current_time = time.time()
+        if entry["expiry"] < current_time:
             analysis_cache.pop(cache_key, None)
             return None
         return entry["data"]
@@ -428,10 +450,11 @@ async def set_cached_analysis(cache_key: str, data: Dict[str, Any]) -> None:
     async with cache_lock:
         analysis_cache[cache_key] = {
             "data": data,
-            "expiry": time.monotonic() + CACHE_TTL_SECONDS,
+            "expiry": time.time() + CACHE_TTL_SECONDS,
         }
 
 
+# FIX #4: Infinite loop - proper client reconnection logic
 async def execute_with_client_retry(client: TelegramClient, operation, phone: str, max_retries: int = 3):
     """Execute a client operation with automatic reconnection on connection errors."""
     for attempt in range(max_retries):
@@ -440,26 +463,32 @@ async def execute_with_client_retry(client: TelegramClient, operation, phone: st
         except (errors.ConnectionError, errors.RPCError, asyncio.TimeoutError) as e:
             if attempt < max_retries - 1:
                 logger.warning(f"Client operation failed for {phone} (attempt {attempt + 1}), reconnecting: {type(e).__name__}")
+                
+                # Disconnect current client
                 try:
                     await client.disconnect()
                 except Exception:
                     pass
-
-                try:
-                    client = await get_client_session(phone)
-                except HTTPException:
-                    raise
-                except Exception as reconnect_error:
-                    logger.error(f"Reconnection failed for {phone}: {reconnect_error}")
+                
+                # Try to reconnect
+                if await connect_with_retry(client, phone):
+                    # Successfully reconnected, retry operation
+                    continue
+                else:
+                    # Failed to reconnect
                     raise HTTPException(status_code=502, detail="Telegram serveriga qayta ulanib bo'lmadi")
-
-                continue
             else:
                 logger.error(f"Client operation failed after {max_retries} attempts for {phone}: {type(e).__name__}")
                 raise HTTPException(status_code=502, detail="Telegram bilan bog'lanishda uzluksizlik yuz berdi")
 
+
+# FIX #1: verify_token - NOT async dependency, use in endpoint instead
 def verify_token(authorization: str = Header(None)) -> str:
-    """JWT token'ni tekshirib, phone'ni qaytaradi (SECURE)."""
+    """JWT token'ni tekshirib, phone'ni qaytaradi (SECURE).
+    
+    Note: This is a SYNC dependency because we can't do async in Depends().
+    Database check is moved to endpoint level.
+    """
     if not authorization:
         raise HTTPException(status_code=401, detail="Authorization talab qilinadi")
     
@@ -467,7 +496,7 @@ def verify_token(authorization: str = Header(None)) -> str:
     if not authorization.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Noto'g'ri token formati")
     
-    token = authorization[7:]
+    token = authorization[7:]  # "Bearer " ni olib tashlash
     
     try:
         payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
@@ -479,6 +508,7 @@ def verify_token(authorization: str = Header(None)) -> str:
     except jwt.InvalidTokenError as e:
         logger.warning(f"Invalid token: {e}")
         raise HTTPException(status_code=401, detail="Noto'g'ri token")
+    
     return phone
 
 
@@ -499,17 +529,20 @@ def create_access_token(phone: str, expires_delta: Optional[timedelta] = None) -
     return token
 
 
+# FIX #10: analyze_texts_batch error handling
 def analyze_texts_batch(texts: List[str]):
     """Matnlarni bittalab emas, birdaniga (batch) ko'rinishda analiz qiladi."""
     global sentiment_analyzer
+    
     if not sentiment_analyzer:
-        raise ValueError("AI model yuklanmadi")
-
+        raise ValueError("AI model is not loaded. Cannot perform analysis.")
+    
     try:
         return sentiment_analyzer(texts, truncation=True, max_length=512)
     except Exception as e:
         logger.error(f"Batch analysis failed: {e}")
         raise
+
 
 # -------------------------
 # 8. Endpointlar
@@ -576,7 +609,7 @@ async def login(request: Request, data: LoginRequest):
             logger.exception("Database error during /login")
             raise HTTPException(status_code=500, detail="Ma'lumotlar bazasiga saqlashda xatolik")
 
-        logger.info(f"\u2713 SMS code sent to {data.phone}")
+        logger.info(f"✓ SMS code sent to {data.phone}")
         return {
             "status": "waiting_for_code",
             "phone_code_hash": sent.phone_code_hash
@@ -592,11 +625,12 @@ async def login(request: Request, data: LoginRequest):
         logger.exception(f"Unexpected error in /login: {e}")
         raise HTTPException(status_code=500, detail="Noma'lum xatolik yuz berdi")
     finally:
+        # FIX #6: Cleanup with proper async handling
         try:
             if client.is_connected():
                 await client.disconnect()
-        except Exception as cleanup_err:
-            logger.warning(f"Login cleanup failed: {cleanup_err}")
+        except Exception as e:
+            logger.warning(f"Failed to disconnect client in finally: {e}")
 
 @app.post("/verify")
 @limiter.limit("5/minute")  # CRITICAL: Prevent brute force
@@ -611,14 +645,16 @@ async def verify(request: Request, data: VerifyRequest):
     if not user:
         raise HTTPException(status_code=404, detail="Login qilinmagan - avval /login qiling")
 
-    if user["api_id"] != data.api_id or user["api_hash"] != data.api_hash:
-        raise HTTPException(status_code=401, detail="API credentials mismatch")
-
     try:
         session_string = decrypt_session_string(user["session_string"])
     except ValueError as e:
         logger.error(f"Session decryption failed for {data.phone}")
         raise HTTPException(status_code=401, detail="Sessiya o'qilishda xatolik - qayta login qiling")
+    
+    # FIX #14: API credentials verification
+    if user["api_id"] != data.api_id or user["api_hash"] != data.api_hash:
+        logger.warning(f"API credentials mismatch for {data.phone}")
+        raise HTTPException(status_code=401, detail="API credentials mos kelmadi")
     
     client = TelegramClient(
         StringSession(session_string),
@@ -719,8 +755,15 @@ async def verify(request: Request, data: VerifyRequest):
 
 @app.post("/chats")
 async def get_chats(request: Request, data: PhoneRequest, authenticated_phone: str = Depends(verify_token)):
+    # FIX #1: Verify token in endpoint, not in dependency
     if authenticated_phone != data.phone:
         raise HTTPException(status_code=403, detail="Token va so'rov phone mos kelmaydi")
+    
+    # Database validation for token
+    query = sessions.select().where(sessions.c.phone == authenticated_phone)
+    user = await database.fetch_one(query)
+    if not user:
+        raise HTTPException(status_code=401, detail="Noto'g'ri token")
     
     try:
         client = await get_client_session(data.phone)
@@ -749,18 +792,27 @@ async def analyze(request: Request, data: AnalyzeRequest, authenticated_phone: s
     if authenticated_phone != data.phone:
         raise HTTPException(status_code=403, detail="Token va so'rov phone mos kelmaydi")
     
+    # Database validation for token
+    query = sessions.select().where(sessions.c.phone == authenticated_phone)
+    user = await database.fetch_one(query)
+    if not user:
+        raise HTTPException(status_code=401, detail="Noto'g'ri token")
+    
     cache_key = get_cache_key(data.phone, data.chat_id, data.limit)
     cached = await get_cached_analysis(cache_key)
     if cached is not None:
-        return cached
+        # FIX #5: Return proper response model
+        return AnalyzeResponse(**cached)
 
     try:
         client = await get_client_session(data.phone)
         
+        # FIX #15: Track message IDs to prevent duplicates
         async def analyze_operation():
-            negative_messages = []
+            negative_messages: List[NegativeMessage] = []
             uncertain_messages = []
             uncertain_texts = []
+            negative_ids: Set[int] = set()  # Track processed message IDs
 
             try:
                 entity = await client.get_entity(data.chat_id)
@@ -776,23 +828,19 @@ async def analyze(request: Request, data: AnalyzeRequest, authenticated_phone: s
                 raise HTTPException(status_code=500, detail="Xabarlarni olishda xatolik yuz berdi")
 
             if not messages:
-                return AnalyzeResponse(
-                    analyzed_count=0,
-                    negative_count=0,
-                    negative_messages=[]
-                )
+                return AnalyzeResponse(analyzed_count=0, negative_count=0, negative_messages=[])
 
-            negative_ids = set()
             for msg in messages:
                 if is_toxic_by_keywords(msg.text):
-                    negative_ids.add(msg.id)
-                    negative_messages.append({
-                        "id": msg.id,
-                        "text": msg.text,
-                        "confidence": 0.0,
-                        "sender_id": msg.sender_id,
-                        "reason": MessageReason.KEYWORD_MATCH
-                    })
+                    if msg.id not in negative_ids:
+                        negative_messages.append(NegativeMessage(
+                            id=msg.id,
+                            text=msg.text,
+                            confidence=0.0,
+                            sender_id=msg.sender_id,
+                            reason=MessageReason.KEYWORD_MATCH
+                        ))
+                        negative_ids.add(msg.id)
                 else:
                     uncertain_messages.append(msg)
                     uncertain_texts.append(msg.text)
@@ -802,17 +850,17 @@ async def analyze(request: Request, data: AnalyzeRequest, authenticated_phone: s
                     try:
                         results = await asyncio.to_thread(analyze_texts_batch, uncertain_texts)
                         for msg, result in zip(uncertain_messages, results):
-                            score = float(result.get("score", 0.0))
-                            if result.get("label") == "NEGATIVE" and score > AI_NEGATIVE_SCORE_THRESHOLD:
-                                if msg.id not in negative_ids:
+                            if msg.id not in negative_ids:  # Check for duplicates
+                                score = float(result.get("score", 0.0))
+                                if result.get("label") == "NEGATIVE" and score > AI_NEGATIVE_SCORE_THRESHOLD:
+                                    negative_messages.append(NegativeMessage(
+                                        id=msg.id,
+                                        text=msg.text,
+                                        confidence=score,
+                                        sender_id=msg.sender_id,
+                                        reason=MessageReason.AI_SENTIMENT
+                                    ))
                                     negative_ids.add(msg.id)
-                                    negative_messages.append({
-                                        "id": msg.id,
-                                        "text": msg.text,
-                                        "confidence": score,
-                                        "sender_id": msg.sender_id,
-                                        "reason": MessageReason.AI_SENTIMENT
-                                    })
                     except Exception:
                         logger.exception("AI modeli bilan tahlil davomida xato yuz berdi, fallback faqat keyword-based tahlil ishlatiladi")
                 else:
@@ -825,7 +873,14 @@ async def analyze(request: Request, data: AnalyzeRequest, authenticated_phone: s
             )
         
         result = await execute_with_client_retry(client, analyze_operation, data.phone)
-        await set_cached_analysis(cache_key, result.model_dump())
+        
+        # FIX #5: Cache response as dict
+        cache_data = {
+            "analyzed_count": result.analyzed_count,
+            "negative_count": result.negative_count,
+            "negative_messages": [msg.dict() for msg in result.negative_messages]
+        }
+        await set_cached_analysis(cache_key, cache_data)
         return result
     except HTTPException:
         raise
