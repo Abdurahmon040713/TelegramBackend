@@ -1,3 +1,64 @@
-.venv
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.python-version
+.pytest_cache/
+.pyre/
+.pytype/
+venv/
+.venv/
+.env
+.env.*
+*.env
+*.env.*
+
+# FastAPI / Flask
+instance/
+.webassets-cache
+.pytest_cache/
+
+# Database files
+*.db
+*.sqlite3
+*.sqlite
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+logs/
+**/logs/
+
+# VS Code
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build
+dist/
+build/
+coverage/
+.coverage
+htmlcov/
+
+# JetBrains
+.idea/
+
+# Misc
+*.bak
+*.swp
+*~

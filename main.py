@@ -66,7 +66,9 @@ cache_lock = asyncio.Lock()
 CACHE_TTL_SECONDS = 3600
 
 # JWT Settings
-JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "your-secret-key-change-in-production")
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+if not JWT_SECRET_KEY:
+    raise ValueError("JWT_SECRET_KEY environment variable is required. Please set it in your .env or environment.")
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRATION_HOURS = 24
 
