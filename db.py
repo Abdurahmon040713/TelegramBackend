@@ -29,6 +29,30 @@ if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 
+def encrypt_value(value: str) -> str:
+    aesgcm = AESGCM(SESSION_ENCRYPTION_KEY_BYTES)
+    nonce = os.urandom(12)
+    encrypted_data = aesgcm.encrypt(nonce, value.encode("utf-8"), None)
+    return base64.urlsafe_b64encode(nonce + encrypted_data).decode("utf-8")
+
+
+def decrypt_value(encrypted_value: str) -> str:
+    if not encrypted_value:
+        raise ValueError("Encrypted value is empty")
+    try:
+        decoded = base64.urlsafe_b64decode(encrypted_value.encode("utf-8"))
+        if len(decoded) < 13:
+            raise ValueError(f"Invalid encrypted length: {len(decoded)} bytes")
+        nonce = decoded[:12]
+        ciphertext = decoded[12:]
+        aesgcm = AESGCM(SESSION_ENCRYPTION_KEY_BYTES)
+        return aesgcm.decrypt(nonce, ciphertext, None).decode("utf-8")
+    except ValueError:
+        raise
+    except Exception as e:
+        raise ValueError(f"Cannot decrypt value: {type(e).__name__}")
+
+
 def encrypt_session_string(session_string: str) -> str:
     aesgcm = AESGCM(SESSION_ENCRYPTION_KEY_BYTES)
     nonce = os.urandom(12)

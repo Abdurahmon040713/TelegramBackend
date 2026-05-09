@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional, Tuple, Set
 from enum import Enum
 import logging
 import jwt
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from uuid import uuid4
 
 logging.basicConfig(level=logging.INFO)
@@ -29,7 +29,7 @@ from slowapi.middleware import SlowAPIMiddleware
 
 # Agar db.py dan ololmasa, xatolik beradi (xavfsizlik uchun)
 try:
-    from db import DATABASE_URL, encrypt_session_string, decrypt_session_string
+    from db import DATABASE_URL, encrypt_session_string, decrypt_session_string, encrypt_value, decrypt_value
 except ImportError as e:
     raise ImportError(f"db.py ni import qilib bo'lmadi: {e}. Xavfsizlik uchun dastur to'xtatildi.")
 
@@ -191,6 +191,27 @@ async def lifespan(app: FastAPI):
     KEYWORD_PATTERNS = [build_keyword_pattern(k) for k in NEGATIVE_KEYWORDS]
     logger.info(f"{len(KEYWORD_PATTERNS)} keyword patternlari tayyor")
 
+    # 4. Migrate plaintext api_hash values to encrypted format
+    try:
+        all_sessions = await database.fetch_all(sessions.select())
+        migrated = 0
+        for session in all_sessions:
+            raw_hash = session["api_hash"]
+            try:
+                decrypt_value(raw_hash)  # Already encrypted — no action needed
+            except Exception:
+                encrypted = encrypt_value(raw_hash)
+                await database.execute(
+                    sessions.update()
+                    .where(sessions.c.phone == session["phone"])
+                    .values(api_hash=encrypted)
+                )
+                migrated += 1
+        if migrated > 0:
+            logger.info(f"✓ {migrated} ta api_hash shifrlandi (migration)")
+    except Exception as e:
+        logger.warning(f"api_hash migration o'tkazib yuborildi: {e}")
+
     yield
 
     # 4. App to'xtaganda barcha Telegram ulanishlarni va DB ni yopish (THREAD-SAFE)
@@ -222,8 +243,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=get_allowed_origins(),
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 app.add_middleware(SlowAPIMiddleware)
@@ -283,6 +304,14 @@ class AnalyzeRequest(BaseModel):
 
 class PhoneRequest(BaseModel):
     phone: str
+
+    @field_validator('phone')
+    @classmethod
+    def phone_valid(cls, v):
+        digits_only = re.sub(r'\D', '', v)
+        if not (10 <= len(digits_only) <= 15):
+            raise ValueError("Noto'g'ri telefon raqami")
+        return v
 
 # FIX #8: NegativeMessage validation with enum and Field constraints
 class MessageReason(str, Enum):
@@ -400,11 +429,17 @@ async def get_client_session(phone: str) -> TelegramClient:
         logger.error(f"Session decryption failed for {phone}: {e}")
         raise HTTPException(status_code=401, detail="Sessiya o'qilishda xatolik - qayta login qiling")
     
+    # Decrypt api_hash for client creation
+    try:
+        api_hash = decrypt_value(user["api_hash"])
+    except Exception:
+        api_hash = user["api_hash"]  # Fallback: unencrypted (migration period)
+
     # Create new client
     client = TelegramClient(
         StringSession(session_string),
         user["api_id"],
-        user["api_hash"],
+        api_hash,
         timeout=TELETHON_CONNECTION_TIMEOUT,
         connection_retries=TELETHON_RETRIES,
         retry_delay=TELETHON_RETRY_DELAY
@@ -517,12 +552,12 @@ def create_access_token(phone: str, expires_delta: Optional[timedelta] = None) -
     if expires_delta is None:
         expires_delta = timedelta(hours=JWT_EXPIRATION_HOURS)
     
-    expire = datetime.utcnow() + expires_delta
+    expire = datetime.now(timezone.utc) + expires_delta
     payload = {
         "phone": phone,
         "exp": expire,
-        "iat": datetime.utcnow(),
-        "jti": str(uuid4())  # Add unique ID to prevent token reuse
+        "iat": datetime.now(timezone.utc),
+        "jti": str(uuid4())  # Unique token ID (for future revocation support)
     }
     
     token = jwt.encode(payload, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
@@ -590,18 +625,19 @@ async def login(request: Request, data: LoginRequest):
             existing = await database.fetch_one(existing_query)
             
             encrypted_session_string = encrypt_session_string(session_string)
+            encrypted_api_hash = encrypt_value(data.api_hash)
             if existing:
                 await database.execute(
                     sessions.update()
                     .where(sessions.c.phone == data.phone)
-                    .values(api_id=data.api_id, api_hash=data.api_hash, session_string=encrypted_session_string)
+                    .values(api_id=data.api_id, api_hash=encrypted_api_hash, session_string=encrypted_session_string)
                 )
             else:
                 await database.execute(
                     sessions.insert().values(
                         phone=data.phone,
                         api_id=data.api_id,
-                        api_hash=data.api_hash,
+                        api_hash=encrypted_api_hash,
                         session_string=encrypted_session_string
                     )
                 )
@@ -651,15 +687,19 @@ async def verify(request: Request, data: VerifyRequest):
         logger.error(f"Session decryption failed for {data.phone}")
         raise HTTPException(status_code=401, detail="Sessiya o'qilishda xatolik - qayta login qiling")
     
-    # FIX #14: API credentials verification
-    if user["api_id"] != data.api_id or user["api_hash"] != data.api_hash:
+    # FIX #14: API credentials verification (decrypt stored api_hash for comparison)
+    try:
+        stored_api_hash = decrypt_value(user["api_hash"])
+    except Exception:
+        stored_api_hash = user["api_hash"]  # Fallback: unencrypted (migration period)
+    if user["api_id"] != data.api_id or stored_api_hash != data.api_hash:
         logger.warning(f"API credentials mismatch for {data.phone}")
         raise HTTPException(status_code=401, detail="API credentials mos kelmadi")
-    
+
     client = TelegramClient(
         StringSession(session_string),
         user["api_id"],
-        user["api_hash"],
+        stored_api_hash,
         timeout=TELETHON_CONNECTION_TIMEOUT,
         connection_retries=TELETHON_RETRIES,
         retry_delay=TELETHON_RETRY_DELAY
@@ -754,6 +794,7 @@ async def verify(request: Request, data: VerifyRequest):
     return {"status": "success", "token": access_token, "token_type": "bearer", "expires_in": JWT_EXPIRATION_HOURS * 3600}
 
 @app.post("/chats")
+@limiter.limit("10/minute")
 async def get_chats(request: Request, data: PhoneRequest, authenticated_phone: str = Depends(verify_token)):
     # FIX #1: Verify token in endpoint, not in dependency
     if authenticated_phone != data.phone:
