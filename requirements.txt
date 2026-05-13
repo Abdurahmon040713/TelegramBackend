@@ -1,4 +1,4 @@
-﻿fastapi==0.121.3
+fastapi==0.121.3
 uvicorn==0.38.0
 gunicorn==23.0.0
 python-dotenv==1.0.1
@@ -13,3 +13,8 @@ torch==2.9.1+cpu
 pydantic==2.10.6
 cryptography==41.0.4
 slowapi==0.1.9
+pyaes==1.6.1
+cryptg==0.4.0
+# ── ONNX inference (optional but recommended — run export_model.py once) ─────
+onnxruntime==1.20.1
+optimum[onnxruntime]==1.23.3
