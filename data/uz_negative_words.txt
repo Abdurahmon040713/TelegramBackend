@@ -2,80 +2,139 @@
 
 ablah
 ahmoq
+axmoq
 am
 amchik
 ami
+aqlsiz
+arzon
 basharangni
+bedab
+bediyonat
+behayo
+benomus
+betarbiya
 betavfiq
 blyad
+blya
 bo'q
+cho'chqa
 chmo
 chort
+chirkin
 dabba
 dalbayob
+dangasa
 eshak
 fohisha
 gandon
-gey
-gondon
-haromi
+g'o'l
 haromzoda
+haromi
 hayvon
+hayvoncha
 iflos
+it
 itdan tarqagan
 itvachcha
+it bolasi
 jalab
 jalap
+jallob
 jinni
 jinnivoy
 kallangni
+kallang ishlamaydi
 kaltafahm
+ketal
+ketgin
 kofir
 ko't
 ko'tinga
 ko'tingni
-lallaygan
+la'nat
 la'nati
+lachai
+lachak
+lallaygan
 lox
 malol
+manfur
+manqa
 maraz
 miyasiz
+miyyang yo'q
 mol
+murdor
+munofiq
 muttaham
 nomard
+nopok
+notavon
+ojiz
 onangni
 oneni
 opangni
+otangni
 padaringni
 padarla'nat
+past
 pastkash
 pederast
 petux
 pidar
 pidaraz
+puchak
 qanjiq
 qashqir
-qotaq
+qo'rqoq
 qotagim
+qotaq
 qotoq
 razil
 sassiq
 sasyot
+sharmanda
+sharmandachi
 sikaman
 siktir
 singlingni
 skatin
 skman
+sotqin
+suka
 surqa
 telba
 tentak
 teshik
 tupoy
+uyatsiz
 xarom
 xaromi
 xunasa
 yaramas
+yo'qol
+yo'qol bu yerdan
 yuzsiz
+zaif
+
+--- Ko'cha haqoratlari va tahqir iboralari ---
+
+aqling yo'q
+boshingni ye
+gapga tushunmas
+g'o'l bosh
+harom o'g'il
+kallang eshak
+loy bosh
+miyasi yo'q
+nasl-nasabsiz
+nasli buzuq
+o'lasiz
+o'l
+qovoq bosh
+tupurmasa bo'lmaydi
+yoq bo'l
 
 --- Firibgarlik, Spam va Reklama ---
 
@@ -115,6 +174,7 @@ lotereya
 loto
 maxfiy kod
 nakrutka
+nomer ber
 obuna bo'ling
 obunachi ko'paytirish
 oson pul
@@ -173,6 +233,7 @@ murtad
 mushrik
 namoyish
 o'ldirish
+o'ldiraman
 pichoqlab
 portlatish
 qatl
@@ -188,16 +249,21 @@ tog'ut
 togut
 xalifa
 xalifalik
+otib tashlayman
+o'ldirib tashlaman
 
 --- Kattalar uchun (18+) va Behayolik ---
 
+eskort
+fohishaxona
+intim
+jinsiy
 porno
 porn
+qizlar raqami
 seks
 sex
-jinsiy
+surat yubor
+video yubor
 yalang'och
-intim
-fohishaxona
-eskort
-qizlar raqami
+yalang'och rasm

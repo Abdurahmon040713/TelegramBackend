@@ -36,11 +36,16 @@ from pydantic import BaseModel, field_validator, Field
 from telethon import TelegramClient, errors
 from telethon.sessions import StringSession
 from sqlalchemy import (
-    Boolean, Column, Float, Integer, String, Table, MetaData, UniqueConstraint,
-    create_engine, text as sql_text,
+    BigInteger, Boolean, Column, Float, Integer, String, Table, MetaData,
+    UniqueConstraint, create_engine, text as sql_text,
 )
 from databases import Database
 import ai_inference
+from database import database as svc_database, violations_table
+from keywords import initialize_patterns as _init_keyword_patterns
+from models import MonitorRequest
+from services.moderation_service import attach_monitor, detach_monitor, get_active_monitors
+from services.telegram_service import _pinned_clients as _monitored_phones
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -85,9 +90,9 @@ messages_table = Table(
     metadata,
     Column("row_id", Integer, primary_key=True),
     Column("phone", String, nullable=False),
-    Column("chat_id", Integer, nullable=False),
-    Column("message_id", Integer, nullable=False),
-    Column("sender_id", Integer, nullable=True),
+    Column("chat_id", BigInteger, nullable=False),
+    Column("message_id", BigInteger, nullable=False),
+    Column("sender_id", BigInteger, nullable=True),
     Column("text", String, nullable=False),
     Column("is_negative", Boolean, default=False),
     Column("reason", String, nullable=True),
@@ -101,7 +106,7 @@ analyses_table = Table(
     metadata,
     Column("id", Integer, primary_key=True),
     Column("phone", String, nullable=False),
-    Column("chat_id", Integer, nullable=False),
+    Column("chat_id", BigInteger, nullable=False),
     Column("fetch_limit", Integer, nullable=False),
     Column("analyzed_count", Integer, default=0),
     Column("negative_count", Integer, default=0),
@@ -190,7 +195,9 @@ def load_negative_words(file_path: str = "data/uz_negative_words.txt") -> List[s
         return []
 
 
-NEGATIVE_KEYWORDS = load_negative_words()
+_BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+_WORD_FILE = os.path.join(_BACKEND_DIR, "data", "uz_negative_words.txt")
+NEGATIVE_KEYWORDS = load_negative_words(_WORD_FILE)
 KEYWORD_PATTERNS: List[re.Pattern] = []
 AI_NEGATIVE_SCORE_THRESHOLD = 0.85
 
@@ -224,6 +231,8 @@ def is_toxic_by_keywords(text: str) -> bool:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await database.connect()
+    # moderation_service / database.py module share a separate pool — connect it too
+    await svc_database.connect()
 
     global KEYWORD_PATTERNS
 
@@ -235,30 +244,71 @@ async def lifespan(app: FastAPI):
         logger.warning("AI model yuklanmadi; faqat keyword tahlili ishlatiladi")
 
     KEYWORD_PATTERNS = [build_keyword_pattern(k) for k in NEGATIVE_KEYWORDS]
-    logger.info("%d keyword pattern tayyor", len(KEYWORD_PATTERNS))
+    logger.info("%d keyword pattern tayyor (main.py pipeline)", len(KEYWORD_PATTERNS))
 
-    # ── Schema migration: add columns that older deployments may be missing ──────
+    # CRITICAL: also populate keywords.py's own KEYWORD_PATTERNS list.
+    # moderation_service.py imports `is_toxic_by_keywords` from keywords.py,
+    # which uses keywords.KEYWORD_PATTERNS — a DIFFERENT object from main.KEYWORD_PATTERNS.
+    # Without this call that list stays empty and monitoring never detects toxic words.
+    _init_keyword_patterns()
+    logger.info("keywords.py patterns initialised for moderation_service")
+
+    # ── Schema migration: add missing columns + widen INTEGER → BIGINT ───────────
+    # Telegram supergroup/channel IDs exceed the 32-bit INTEGER range
+    # (e.g. -1001234567890 ≈ -10^12).  BIGINT (64-bit) is required.
+    #
+    # IMPORTANT: each logical group runs in its OWN transaction so that
+    # a failure in one group (e.g. "column already exists") does NOT roll
+    # back the others.  Previously all statements were in a single transaction,
+    # which meant that if ADD COLUMN failed the BIGINT widening also failed
+    # silently, leaving chat_id as 32-bit INTEGER and causing
+    # "integer out of range" 500 errors when searching with real supergroup IDs.
     if "postgresql" in DATABASE_URL.lower():
-        _alter_cols = [
-            # analyses table
-            "ALTER TABLE analyses ADD COLUMN IF NOT EXISTS fetch_limit   INTEGER NOT NULL DEFAULT 50",
+
+        # Group 1 — add optional columns that old deployments may be missing
+        _add_cols = [
+            "ALTER TABLE analyses ADD COLUMN IF NOT EXISTS fetch_limit    INTEGER NOT NULL DEFAULT 50",
             "ALTER TABLE analyses ADD COLUMN IF NOT EXISTS analyzed_count INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE analyses ADD COLUMN IF NOT EXISTS negative_count INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE analyses ADD COLUMN IF NOT EXISTS completed_at  VARCHAR",
-            # messages table
-            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS is_negative   BOOLEAN DEFAULT FALSE",
-            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS reason        VARCHAR",
-            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS confidence    FLOAT   DEFAULT 0.0",
-            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS analyzed_at   VARCHAR",
+            "ALTER TABLE analyses ADD COLUMN IF NOT EXISTS completed_at   VARCHAR",
+            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS is_negative    BOOLEAN DEFAULT FALSE",
+            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS reason         VARCHAR",
+            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS confidence     FLOAT   DEFAULT 0.0",
+            "ALTER TABLE messages ADD COLUMN IF NOT EXISTS analyzed_at    VARCHAR",
         ]
         try:
             with engine.connect() as conn:
-                for stmt in _alter_cols:
+                for stmt in _add_cols:
                     conn.execute(sql_text(stmt))
                 conn.commit()
-            logger.info("Schema migration: columns verified/added")
+            logger.info("Schema migration: missing columns verified/added")
         except Exception as exc:
-            logger.warning("Schema migration skipped: %s", exc)
+            logger.warning("Schema migration (add columns) skipped: %s", exc)
+
+        # Group 2 — widen ID columns to BIGINT (each column in its OWN
+        # transaction so one already-BIGINT column doesn't abort the rest)
+        _widen = [
+            "ALTER TABLE violations ALTER COLUMN chat_id    TYPE BIGINT",
+            "ALTER TABLE violations ALTER COLUMN user_id    TYPE BIGINT",
+            "ALTER TABLE messages   ALTER COLUMN chat_id    TYPE BIGINT",
+            "ALTER TABLE messages   ALTER COLUMN message_id TYPE BIGINT",
+            "ALTER TABLE messages   ALTER COLUMN sender_id  TYPE BIGINT",
+            "ALTER TABLE analyses   ALTER COLUMN chat_id    TYPE BIGINT",
+        ]
+        widened, skipped = 0, 0
+        for stmt in _widen:
+            try:
+                with engine.connect() as conn:
+                    conn.execute(sql_text(stmt))
+                    conn.commit()
+                widened += 1
+            except Exception as exc:
+                logger.debug("BIGINT widen skipped (%s): %s", stmt.split()[2], exc)
+                skipped += 1
+        logger.info(
+            "BIGINT migration: %d widened, %d already BIGINT / skipped",
+            widened, skipped,
+        )
 
     # ── PostgreSQL full-text search index ─────────────────────────────────────
     if "postgresql" in DATABASE_URL.lower():
@@ -386,6 +436,10 @@ async def lifespan(app: FastAPI):
                 pass
         pending_2fa_clients.clear()
 
+    try:
+        await svc_database.disconnect()
+    except Exception:
+        pass
     await database.disconnect()
 
 
@@ -505,9 +559,46 @@ class TwoFARequest(BaseModel):
 class SearchRequest(BaseModel):
     phone: str
     query: str
+    # chat_id accepts int, numeric string, empty string, null, or 0.
+    # The before-validator normalises every incoming format to Optional[int]
+    # so the endpoint never raises a ValidationError when the combobox sends
+    # a stringified ID or an empty value.
     chat_id: Optional[int] = None
     negative_only: bool = False
     limit: int = 50
+
+    @field_validator("chat_id", mode="before")
+    @classmethod
+    def coerce_chat_id(cls, v) -> Optional[int]:
+        """Normalise chat_id from any frontend format to Optional[int].
+
+        Accepted inputs and their result:
+          None, "", "0", 0, 0.0  →  None  (search across all chats)
+          -1001234567890         →  -1001234567890  (int, passed through)
+          "-1001234567890"       →  -1001234567890  (numeric string, converted)
+          "-100abc"              →  ValueError  (non-numeric string rejected)
+        """
+        if v is None:
+            return None
+        if isinstance(v, bool):
+            # bool is a subclass of int in Python; reject it explicitly.
+            raise ValueError("chat_id bool bo'lishi mumkin emas")
+        if isinstance(v, int):
+            return v if v != 0 else None
+        if isinstance(v, float):
+            i = int(v)
+            return i if i != 0 else None
+        if isinstance(v, str):
+            stripped = v.strip()
+            if not stripped or stripped == "0":
+                return None
+            try:
+                return int(stripped)
+            except (ValueError, TypeError):
+                raise ValueError(
+                    f"chat_id raqam bo'lishi kerak, '{stripped}' noto'g'ri format"
+                )
+        raise ValueError(f"chat_id kutilmagan tur: {type(v).__name__}")
 
     @field_validator("query")
     @classmethod
@@ -583,16 +674,25 @@ async def connect_with_retry(
 
 
 async def _evict_lru_client_if_needed() -> None:
-    """Evict the least-recently-used client when the pool is full."""
+    """Evict the least-recently-used non-pinned client when the pool is full."""
     async with active_clients_lock:
-        if len(active_clients) >= MAX_ACTIVE_CLIENTS:
-            oldest_phone, oldest_client = next(iter(active_clients.items()))
+        if len(active_clients) < MAX_ACTIVE_CLIENTS:
+            return
+        for oldest_phone, oldest_client in list(active_clients.items()):
+            # Skip clients that have active monitoring handlers attached.
+            if oldest_phone in _monitored_phones:
+                continue
             try:
                 await oldest_client.disconnect()
             except Exception:
                 pass
             del active_clients[oldest_phone]
             logger.info("LRU evicted client for %s", mask_phone(oldest_phone))
+            return
+        logger.warning(
+            "All %d clients are pinned by active monitors; cannot evict.",
+            len(active_clients),
+        )
 
 
 async def get_client_session(phone: str) -> TelegramClient:
@@ -1470,6 +1570,48 @@ async def analyze_status(
     return job
 
 
+async def _run_text_search(base_query, search_text: str, limit: int) -> list:
+    """Execute a text search query with FTS → ILIKE fallback.
+
+    PostgreSQL strategy:
+      1. Try GIN-indexed ``plainto_tsquery`` (fast, uses index).
+      2. If FTS raises for any reason — short word like 'ja', Uzbek apostrophe
+         in the input, empty tsquery, stopword-only input, or PostgreSQL version
+         quirks — transparently retry with ``ILIKE '%text%'`` so the user always
+         gets results instead of a 500 error.
+
+    SQLite / other: always ILIKE.
+    """
+    final_query = base_query.order_by(messages_table.c.row_id.desc()).limit(limit)
+
+    if "postgresql" in DATABASE_URL.lower():
+        try:
+            fts_query = final_query.where(
+                sql_text(
+                    "to_tsvector('simple', messages.text) "
+                    "@@ plainto_tsquery('simple', :fts_q)"
+                ).bindparams(fts_q=search_text)
+            )
+            rows = await database.fetch_all(fts_query)
+            logger.debug("FTS search OK: query=%r rows=%d", search_text, len(rows))
+            return list(rows)
+        except Exception as fts_exc:
+            # FTS can fail on: very short words, apostrophes, empty tsquery,
+            # or PostgreSQL version differences.  Log and fall through to ILIKE.
+            logger.warning(
+                "FTS failed for query=%r (%s: %s) — retrying with ILIKE",
+                search_text, type(fts_exc).__name__, fts_exc,
+            )
+
+    # ILIKE fallback — works for all inputs including short words and apostrophes
+    ilike_query = final_query.where(
+        messages_table.c.text.ilike(f"%{search_text}%")
+    )
+    rows = await database.fetch_all(ilike_query)
+    logger.debug("ILIKE search OK: query=%r rows=%d", search_text, len(rows))
+    return list(rows)
+
+
 @app.post("/search")
 @limiter.limit("20/minute")
 async def search_messages(
@@ -1477,46 +1619,54 @@ async def search_messages(
     data: SearchRequest,
     authenticated_phone: str = Depends(verify_token),
 ):
-    """Full-text search across stored negative messages for this user.
+    """Full-text search across stored messages for this user.
 
-    Uses PostgreSQL GIN index (to_tsvector) when available; falls back to
-    ILIKE for SQLite in development.
+    Text matching strategy (see ``_run_text_search``):
+      PostgreSQL → GIN FTS first, ILIKE fallback on any FTS error.
+      SQLite     → ILIKE always.
+
+    The chat_id column is BIGINT; values are cast to int() explicitly
+    so SQLAlchemy binds the correct 64-bit type regardless of Pydantic's
+    internal representation.
     """
     normalized_phone = normalize_phone(data.phone)
     if authenticated_phone != normalized_phone:
-        raise HTTPException(status_code=403, detail="Token va so'rov phone mos kelmaydi")
+        raise HTTPException(
+            status_code=403,
+            detail="Token va so'rov phone mos kelmaydi",
+        )
 
     try:
-        query = (
-            messages_table.select()
-            .where(messages_table.c.phone == normalized_phone)
+        # ── Base filter: owner phone + optional chat + optional negative-only ──
+        base_query = messages_table.select().where(
+            messages_table.c.phone == normalized_phone
         )
-        if data.chat_id is not None:
-            query = query.where(messages_table.c.chat_id == data.chat_id)
-        if data.negative_only:
-            query = query.where(messages_table.c.is_negative == True)  # noqa: E712
 
-        if "postgresql" in DATABASE_URL.lower():
-            query = query.where(
-                sql_text("to_tsvector('simple', messages.text) @@ plainto_tsquery('simple', :q)")
-            ).bindparams(q=data.query)
-        else:
-            query = query.where(
-                messages_table.c.text.ilike(f"%{data.query}%")
+        if data.chat_id is not None:
+            # Explicit int() ensures SQLAlchemy binds as BIGINT, not as a generic
+            # Python object, which prevents "integer out of range" on large
+            # Telegram supergroup IDs (e.g. -1001234567890).
+            base_query = base_query.where(
+                messages_table.c.chat_id == int(data.chat_id)
             )
 
-        query = query.order_by(messages_table.c.row_id.desc()).limit(data.limit)
-        rows = await database.fetch_all(query)
+        if data.negative_only:
+            base_query = base_query.where(
+                messages_table.c.is_negative == True  # noqa: E712
+            )
+
+        # ── Text search (FTS with ILIKE fallback) ─────────────────────────────
+        rows = await _run_text_search(base_query, data.query, data.limit)
 
         results = [
             {
-                "id": r["message_id"],
-                "chat_id": r["chat_id"],
-                "text": r["text"],
+                "id":          r["message_id"],
+                "chat_id":     r["chat_id"],
+                "text":        r["text"],
                 "is_negative": r["is_negative"],
-                "reason": r["reason"],
-                "confidence": r["confidence"],
-                "sender_id": r["sender_id"],
+                "reason":      r["reason"],
+                "confidence":  r["confidence"],
+                "sender_id":   r["sender_id"],
                 "analyzed_at": r["analyzed_at"],
             }
             for r in rows
@@ -1526,7 +1676,17 @@ async def search_messages(
     except HTTPException:
         raise
     except Exception:
-        logger.exception("Search failed for %s", mask_phone(normalized_phone))
+        # Full traceback is written to the structured log so the root cause is
+        # always visible in production (not just the generic 500 message).
+        logger.exception(
+            "Search failed — phone=%s  query=%r  chat_id=%r  "
+            "negative_only=%s  limit=%d",
+            mask_phone(normalized_phone),
+            data.query,
+            data.chat_id,
+            data.negative_only,
+            data.limit,
+        )
         raise HTTPException(status_code=500, detail="Qidiruvda xatolik yuz berdi")
 
 
@@ -1584,6 +1744,157 @@ async def get_stats(
         logger.error("Stats fetch failed for %s — %s: %s",
                      mask_phone(authenticated_phone), type(exc).__name__, exc)
         raise HTTPException(status_code=500, detail="Statistika olishda xatolik")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 10. Monitor & Violations endpoints
+# ─────────────────────────────────────────────────────────────────────────────
+
+@app.post("/monitor/start")
+@limiter.limit("30/minute")
+async def monitor_start(
+    request: Request,
+    data: MonitorRequest,
+    authenticated_phone: str = Depends(verify_token),
+):
+    """Attach a real-time Telethon moderation handler to the given chat."""
+    normalized = normalize_phone(data.phone)
+    if authenticated_phone != normalized:
+        raise HTTPException(status_code=403, detail="Token va so'rov phone mos kelmaydi")
+
+    user = await database.fetch_one(
+        sessions.select().where(sessions.c.phone == normalized)
+    )
+    if not user:
+        raise HTTPException(status_code=401, detail="Noto'g'ri token")
+
+    # Early return: skip all Telegram API calls if handler is already active.
+    active_chats = await get_active_monitors(normalized)
+    if data.chat_id in active_chats:
+        return {"status": "already_monitoring", "chat_id": data.chat_id}
+
+    try:
+        client = await get_client_session(normalized)
+    except HTTPException:
+        raise
+
+    # get_input_entity uses Telethon's session cache — avoids a live Telegram API
+    # round-trip for chats the account has already visited.
+    # The resolved entity is passed to attach_monitor so the event filter
+    # matches supergroup updates reliably (raw negative integers can fail on some versions).
+    entity = None
+    try:
+        entity = await client.get_input_entity(data.chat_id)
+        logger.info(
+            "Entity resolved: chat=%d type=%s",
+            data.chat_id, type(entity).__name__,
+        )
+    except errors.FloodWaitError as exc:
+        logger.warning(
+            "FloodWait on get_input_entity: phone=%s chat=%d wait=%ds",
+            mask_phone(normalized), data.chat_id, exc.seconds,
+        )
+        raise HTTPException(
+            status_code=429,
+            detail=f"Telegram API chekloviga uchradi. {exc.seconds} soniyadan so'ng qayta urining.",
+            headers={"Retry-After": str(exc.seconds)},
+        )
+    except (errors.ChannelPrivateError, errors.ChatAdminRequiredError):
+        raise HTTPException(
+            status_code=403,
+            detail="Bu changa kirish huquqi yo'q (xususiy guruh yoki adminlik kerak)",
+        )
+    except Exception as exc:
+        logger.warning("get_input_entity failed for chat=%d: %s", data.chat_id, exc)
+        raise HTTPException(status_code=404, detail="Chat topilmadi yoki kira olmadi")
+
+    already = not await attach_monitor(client, normalized, data.chat_id, entity)
+    if already:
+        return {"status": "already_monitoring", "chat_id": data.chat_id}
+
+    logger.info("Monitoring started: phone=%s  chat=%d", mask_phone(normalized), data.chat_id)
+    return {"status": "monitoring_started", "chat_id": data.chat_id}
+
+
+@app.post("/monitor/stop")
+@limiter.limit("30/minute")
+async def monitor_stop(
+    request: Request,
+    data: MonitorRequest,
+    authenticated_phone: str = Depends(verify_token),
+):
+    """Detach the moderation handler from the given chat."""
+    normalized = normalize_phone(data.phone)
+    if authenticated_phone != normalized:
+        raise HTTPException(status_code=403, detail="Token va so'rov phone mos kelmaydi")
+
+    user = await database.fetch_one(
+        sessions.select().where(sessions.c.phone == normalized)
+    )
+    if not user:
+        raise HTTPException(status_code=401, detail="Noto'g'ri token")
+
+    try:
+        client = await get_client_session(normalized)
+    except HTTPException:
+        raise
+
+    stopped = await detach_monitor(client, normalized, data.chat_id)
+    if not stopped:
+        return {"status": "not_monitoring", "chat_id": data.chat_id}
+
+    logger.info("Monitoring stopped: phone=%s  chat=%d", mask_phone(normalized), data.chat_id)
+    return {"status": "monitoring_stopped", "chat_id": data.chat_id}
+
+
+@app.get("/monitor/status")
+@limiter.limit("60/minute")
+async def monitor_status(
+    request: Request,
+    authenticated_phone: str = Depends(verify_token),
+):
+    """Return chat_ids currently monitored by this account (in-memory registry)."""
+    chats = await get_active_monitors(authenticated_phone)
+    return {"phone": authenticated_phone, "monitored_chats": chats}
+
+
+@app.get("/violations/{chat_id}")
+@limiter.limit("60/minute")
+async def get_violations(
+    request: Request,
+    chat_id: int,
+    authenticated_phone: str = Depends(verify_token),
+):
+    """Return all violation records for a chat managed by the authenticated account."""
+    try:
+        rows = await database.fetch_all(
+            violations_table.select()
+            .where(violations_table.c.phone == authenticated_phone)
+            .where(violations_table.c.chat_id == chat_id)
+            .order_by(violations_table.c.warn_count.desc())
+        )
+        return {
+            "chat_id": chat_id,
+            "violations": [
+                {
+                    "user_id":    r["user_id"],
+                    "warn_count": r["warn_count"],
+                    "is_muted":   r["is_muted"],
+                    "is_banned":  r["is_banned"],
+                    "muted_until": r["muted_until"],
+                }
+                for r in rows
+            ],
+        }
+    except Exception:
+        logger.exception(
+            "Violations fetch failed for phone=%s chat=%d",
+            mask_phone(authenticated_phone), chat_id,
+        )
+        raise HTTPException(
+            status_code=500,
+            detail="Qoidabuzarlar ro'yxatini olishda xatolik",
+        )
 
 
 if __name__ == "__main__":
