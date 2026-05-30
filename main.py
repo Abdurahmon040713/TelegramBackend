@@ -37,7 +37,7 @@ from telethon import TelegramClient, errors
 from telethon.sessions import StringSession
 from sqlalchemy import (
     BigInteger, Boolean, Column, Float, Integer, String, Table, MetaData,
-    UniqueConstraint, create_engine, text as sql_text,
+    UniqueConstraint, and_, or_, create_engine, text as sql_text,
 )
 from databases import Database
 import ai_inference
@@ -557,31 +557,23 @@ class TwoFARequest(BaseModel):
 
 
 class SearchRequest(BaseModel):
+    """Audit-log query: date range + optional chat filter.
+
+    Replaces the old keyword-search model.  Admins select a date; the endpoint
+    returns every negative incident recorded in that window — no keyword guessing.
+    """
     phone: str
-    query: str
-    # chat_id accepts int, numeric string, empty string, null, or 0.
-    # The before-validator normalises every incoming format to Optional[int]
-    # so the endpoint never raises a ValidationError when the combobox sends
-    # a stringified ID or an empty value.
+    start_date: str           # "YYYY-MM-DD", inclusive
+    end_date: Optional[str] = None  # "YYYY-MM-DD", exclusive; defaults to start + 1 day
     chat_id: Optional[int] = None
-    negative_only: bool = False
-    limit: int = 50
+    negative_only: bool = True  # audit log defaults to showing deleted/negative incidents
 
     @field_validator("chat_id", mode="before")
     @classmethod
     def coerce_chat_id(cls, v) -> Optional[int]:
-        """Normalise chat_id from any frontend format to Optional[int].
-
-        Accepted inputs and their result:
-          None, "", "0", 0, 0.0  →  None  (search across all chats)
-          -1001234567890         →  -1001234567890  (int, passed through)
-          "-1001234567890"       →  -1001234567890  (numeric string, converted)
-          "-100abc"              →  ValueError  (non-numeric string rejected)
-        """
         if v is None:
             return None
         if isinstance(v, bool):
-            # bool is a subclass of int in Python; reject it explicitly.
             raise ValueError("chat_id bool bo'lishi mumkin emas")
         if isinstance(v, int):
             return v if v != 0 else None
@@ -600,20 +592,23 @@ class SearchRequest(BaseModel):
                 )
         raise ValueError(f"chat_id kutilmagan tur: {type(v).__name__}")
 
-    @field_validator("query")
+    @field_validator("start_date")
     @classmethod
-    def query_not_empty(cls, v: str) -> str:
-        v = v.strip()
-        if len(v) < 2:
-            raise ValueError("Qidiruv so'zi kamida 2 belgi bo'lishi kerak")
-        return v
+    def validate_start_date(cls, v: str) -> str:
+        try:
+            return datetime.fromisoformat(v).date().isoformat()
+        except (ValueError, TypeError):
+            raise ValueError("start_date YYYY-MM-DD formatida bo'lishi kerak")
 
-    @field_validator("limit")
+    @field_validator("end_date", mode="before")
     @classmethod
-    def limit_valid(cls, v: int) -> int:
-        if v <= 0 or v > 500:
-            raise ValueError("Limit 1-500 oralig'ida bo'lishi kerak")
-        return v
+    def validate_end_date(cls, v) -> Optional[str]:
+        if v is None or v == "":
+            return None
+        try:
+            return datetime.fromisoformat(str(v)).date().isoformat()
+        except (ValueError, TypeError):
+            raise ValueError("end_date YYYY-MM-DD formatida bo'lishi kerak")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1573,16 +1568,25 @@ async def analyze_status(
 async def _run_text_search(base_query, search_text: str, limit: int) -> list:
     """Execute a text search query with FTS → ILIKE fallback.
 
-    PostgreSQL strategy:
+    When ``search_text`` is empty the text-filter is skipped entirely and the
+    base query is run as-is (returns all rows matching the other filters, e.g.
+    chat_id + negative_only).  This lets the Security Audit Log show every
+    incident in a group without requiring a keyword.
+
+    PostgreSQL strategy (non-empty query only):
       1. Try GIN-indexed ``plainto_tsquery`` (fast, uses index).
-      2. If FTS raises for any reason — short word like 'ja', Uzbek apostrophe
-         in the input, empty tsquery, stopword-only input, or PostgreSQL version
-         quirks — transparently retry with ``ILIKE '%text%'`` so the user always
-         gets results instead of a 500 error.
+      2. If FTS raises — short word like 'ja', Uzbek apostrophe, empty tsquery,
+         stopword-only input — retry transparently with ``ILIKE '%text%'``.
 
     SQLite / other: always ILIKE.
     """
     final_query = base_query.order_by(messages_table.c.row_id.desc()).limit(limit)
+
+    # ── No keyword → return all matching incidents (skip text filter) ──────────
+    if not search_text:
+        rows = await database.fetch_all(final_query)
+        logger.debug("Text search skipped (empty query): rows=%d", len(rows))
+        return list(rows)
 
     if "postgresql" in DATABASE_URL.lower():
         try:
@@ -1619,15 +1623,14 @@ async def search_messages(
     data: SearchRequest,
     authenticated_phone: str = Depends(verify_token),
 ):
-    """Full-text search across stored messages for this user.
+    """Chronological audit log: all incidents in the given date range.
 
-    Text matching strategy (see ``_run_text_search``):
-      PostgreSQL → GIN FTS first, ILIKE fallback on any FTS error.
-      SQLite     → ILIKE always.
+    The keyword-search model has been replaced by a date-range report so admins
+    can review every violation that occurred on a specific day without having to
+    know the toxic words in advance.  No FTS, no limit — every incident is returned.
 
-    The chat_id column is BIGINT; values are cast to int() explicitly
-    so SQLAlchemy binds the correct 64-bit type regardless of Pydantic's
-    internal representation.
+    analyzed_at is stored as an ISO-8601 VARCHAR; lexicographic string comparison
+    (>= "YYYY-MM-DD") correctly selects rows whose timestamp starts on that date.
     """
     normalized_phone = normalize_phone(data.phone)
     if authenticated_phone != normalized_phone:
@@ -1637,57 +1640,251 @@ async def search_messages(
         )
 
     try:
-        # ── Base filter: owner phone + optional chat + optional negative-only ──
-        base_query = messages_table.select().where(
-            messages_table.c.phone == normalized_phone
-        )
+        # ── Compute inclusive start / exclusive end ────────────────────────────
+        start_dt  = datetime.fromisoformat(data.start_date)
+        end_dt    = (datetime.fromisoformat(data.end_date)
+                     if data.end_date else start_dt + timedelta(days=1))
+        start_str = start_dt.date().isoformat()   # "2026-05-30"
+        end_str   = end_dt.date().isoformat()     # "2026-05-31"
 
+        # ── Base query: phone + date window + optional filters ─────────────────
+        base_query = (
+            messages_table.select()
+            .where(messages_table.c.phone == normalized_phone)
+            .where(messages_table.c.analyzed_at >= start_str)
+            .where(messages_table.c.analyzed_at <  end_str)
+        )
         if data.chat_id is not None:
-            # Explicit int() ensures SQLAlchemy binds as BIGINT, not as a generic
-            # Python object, which prevents "integer out of range" on large
-            # Telegram supergroup IDs (e.g. -1001234567890).
             base_query = base_query.where(
                 messages_table.c.chat_id == int(data.chat_id)
             )
-
         if data.negative_only:
             base_query = base_query.where(
                 messages_table.c.is_negative == True  # noqa: E712
             )
 
-        # ── Text search (FTS with ILIKE fallback) ─────────────────────────────
-        rows = await _run_text_search(base_query, data.query, data.limit)
+        # No row limit — return every incident in the period, newest first.
+        rows = list(await database.fetch_all(
+            base_query.order_by(messages_table.c.analyzed_at.desc())
+        ))
 
-        results = [
-            {
+        # ── Batch-fetch violation status for every unique (chat_id, sender_id) ─
+        # A single IN-equivalent query replaces N separate lookups.
+        pairs: set[tuple[int, int]] = {
+            (int(r["chat_id"]), int(r["sender_id"]))
+            for r in rows
+            if r["sender_id"] is not None
+        }
+        violations_map: Dict[tuple[int, int], dict] = {}
+        if pairs:
+            conds = [
+                and_(
+                    violations_table.c.chat_id == cid,
+                    violations_table.c.user_id == uid,
+                )
+                for cid, uid in pairs
+            ]
+            viol_rows = await svc_database.fetch_all(
+                violations_table.select()
+                .where(violations_table.c.phone == normalized_phone)
+                .where(or_(*conds))
+            )
+            for vr in viol_rows:
+                violations_map[(int(vr["chat_id"]), int(vr["user_id"]))] = {
+                    "is_banned":   vr["is_banned"],
+                    "is_muted":    vr["is_muted"],
+                    "warn_count":  vr["warn_count"],
+                    "muted_until": vr["muted_until"],
+                }
+
+        # ── Build enriched result list ─────────────────────────────────────────
+        results = []
+        for r in rows:
+            chat_id   = r["chat_id"]
+            sender_id = r["sender_id"]
+            v = violations_map.get((int(chat_id), int(sender_id))) if sender_id else None
+
+            if v is None:
+                user_status = None
+            elif v["is_banned"]:
+                user_status = "banned"
+            elif v["is_muted"]:
+                user_status = "muted"
+            elif v["warn_count"] > 0:
+                user_status = "warned"
+            else:
+                user_status = None
+
+            results.append({
                 "id":          r["message_id"],
-                "chat_id":     r["chat_id"],
+                "chat_id":     chat_id,
                 "text":        r["text"],
                 "is_negative": r["is_negative"],
                 "reason":      r["reason"],
                 "confidence":  r["confidence"],
-                "sender_id":   r["sender_id"],
+                "sender_id":   sender_id,
                 "analyzed_at": r["analyzed_at"],
-            }
-            for r in rows
-        ]
-        return {"results": results, "count": len(results), "query": data.query}
+                # Violation status for the message author (for audit log badges)
+                "user_status": user_status,
+                "warn_count":  v["warn_count"]  if v else None,
+                "muted_until": v["muted_until"] if v else None,
+            })
+
+        return {
+            "results": results,
+            "count":   len(results),
+            "query":   f"{start_str} – {end_str}",   # date range label for the UI
+        }
 
     except HTTPException:
         raise
     except Exception:
-        # Full traceback is written to the structured log so the root cause is
-        # always visible in production (not just the generic 500 message).
         logger.exception(
-            "Search failed — phone=%s  query=%r  chat_id=%r  "
-            "negative_only=%s  limit=%d",
-            mask_phone(normalized_phone),
-            data.query,
-            data.chat_id,
-            data.negative_only,
-            data.limit,
+            "Search failed — phone=%s  start=%r  end=%r  chat_id=%r",
+            mask_phone(normalized_phone), data.start_date, data.end_date, data.chat_id,
         )
         raise HTTPException(status_code=500, detail="Qidiruvda xatolik yuz berdi")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Audit Report — send formatted incident summary to Saved Messages
+# ─────────────────────────────────────────────────────────────────────────────
+
+class ReportRequest(BaseModel):
+    phone: str
+    chat_id: int
+    start_date: str
+    end_date: Optional[str] = None
+
+    @field_validator("chat_id", mode="before")
+    @classmethod
+    def coerce_chat_id(cls, v) -> int:
+        if isinstance(v, bool):
+            raise ValueError("chat_id bool bo'lishi mumkin emas")
+        if isinstance(v, (int, float)):
+            return int(v)
+        if isinstance(v, str):
+            try:
+                return int(v.strip())
+            except (ValueError, TypeError):
+                raise ValueError("chat_id raqam bo'lishi kerak")
+        raise ValueError(f"chat_id kutilmagan tur: {type(v).__name__}")
+
+    @field_validator("start_date")
+    @classmethod
+    def validate_start(cls, v: str) -> str:
+        try:
+            return datetime.fromisoformat(v).date().isoformat()
+        except (ValueError, TypeError):
+            raise ValueError("start_date YYYY-MM-DD formatida bo'lishi kerak")
+
+    @field_validator("end_date", mode="before")
+    @classmethod
+    def validate_end(cls, v) -> Optional[str]:
+        if v is None or v == "":
+            return None
+        try:
+            return datetime.fromisoformat(str(v)).date().isoformat()
+        except (ValueError, TypeError):
+            raise ValueError("end_date YYYY-MM-DD formatida bo'lishi kerak")
+
+
+@app.post("/report/send")
+@limiter.limit("5/minute")
+async def send_audit_report(
+    request: Request,
+    data: ReportRequest,
+    authenticated_phone: str = Depends(verify_token),
+):
+    """Fetch incidents for the period and send a formatted report to Saved Messages.
+
+    The report is delivered to the authenticated user's own Telegram 'Saved
+    Messages' via their Telethon session — private, secure, no third party.
+    """
+    normalized = normalize_phone(data.phone)
+    if authenticated_phone != normalized:
+        raise HTTPException(status_code=403, detail="Token va so'rov phone mos kelmaydi")
+
+    user = await database.fetch_one(
+        sessions.select().where(sessions.c.phone == normalized)
+    )
+    if not user:
+        raise HTTPException(status_code=401, detail="Noto'g'ri token")
+
+    try:
+        start_dt  = datetime.fromisoformat(data.start_date)
+        end_dt    = (datetime.fromisoformat(data.end_date)
+                     if data.end_date else start_dt + timedelta(days=1))
+        start_str = start_dt.date().isoformat()
+        end_str   = end_dt.date().isoformat()
+
+        # Single-day label vs range label
+        single_day = (end_dt - start_dt).days == 1
+        date_label = start_str if single_day else f"{start_str} → {end_str}"
+
+        rows = list(await database.fetch_all(
+            messages_table.select()
+            .where(messages_table.c.phone    == normalized)
+            .where(messages_table.c.chat_id  == int(data.chat_id))
+            .where(messages_table.c.is_negative == True)  # noqa: E712
+            .where(messages_table.c.analyzed_at >= start_str)
+            .where(messages_table.c.analyzed_at <  end_str)
+            .order_by(messages_table.c.analyzed_at.desc())
+        ))
+
+        if not rows:
+            return {"status": "nothing_to_report", "sent": False, "incident_count": 0}
+
+        total = len(rows)
+        lines: List[str] = [
+            "🔒 **Xavfsizlik Jurnali Hisoboti**",
+            f"📅 Sana: `{date_label}`",
+            f"💬 Chat ID: `{data.chat_id}`",
+            f"🚨 Jami incidentlar: **{total} ta**",
+            "",
+            "━━━━━━━━━━━━━━━━━━━━",
+            "",
+        ]
+
+        for i, r in enumerate(rows[:20], 1):
+            method  = "Lug'at" if r["reason"] == "keyword_match" else "AI"
+            sender  = f"User #{r['sender_id']}" if r["sender_id"] else "Noma'lum"
+            snippet = r["text"][:120] + ("..." if len(r["text"]) > 120 else "")
+            ts      = (r["analyzed_at"][:16].replace("T", " ")
+                       if r["analyzed_at"] else "—")
+            lines.append(f"**{i}. [{method}]** `{sender}` · _{ts}_")
+            lines.append(f"> {snippet}")
+            lines.append("")
+
+        if total > 20:
+            lines.append(
+                f"_...va yana {total - 20} ta incident "
+                f"(to'liq ro'yxat uchun CSV eksportdan foydalaning)_"
+            )
+            lines.append("")
+
+        lines += [
+            "━━━━━━━━━━━━━━━━━━━━",
+            "_© ChatSphere Xavfsizlik Tizimi_",
+        ]
+
+        client = await get_client_session(normalized)
+        await client.send_message("me", "\n".join(lines), parse_mode="markdown")
+
+        logger.info(
+            "Audit report sent: phone=%s chat=%d incidents=%d date=%s",
+            mask_phone(normalized), data.chat_id, total, date_label,
+        )
+        return {"status": "sent", "sent": True, "incident_count": total}
+
+    except HTTPException:
+        raise
+    except Exception:
+        logger.exception(
+            "Report send failed — phone=%s chat=%d date=%s",
+            mask_phone(normalized), data.chat_id, data.start_date,
+        )
+        raise HTTPException(status_code=500, detail="Hisobot yuborishda xatolik yuz berdi")
 
 
 @app.get("/stats")
