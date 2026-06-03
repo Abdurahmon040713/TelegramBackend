@@ -23,6 +23,10 @@ instance/
 *.sqlite3
 *.sqlite
 
+# Telethon session files — contain auth tokens, must never be committed
+*.session
+*.session-journal
+
 # Node / Next.js
 node_modules/
 .next/

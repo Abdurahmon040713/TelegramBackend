@@ -35,12 +35,16 @@ from uuid import uuid4
 from pydantic import BaseModel, field_validator, Field
 from telethon import TelegramClient, errors
 from telethon.sessions import StringSession
+from telethon.tl.functions.auth import ResendCodeRequest as TLResendCodeRequest
+from telethon.tl.types.auth import SentCodeTypeApp as TLSentCodeTypeApp
 from sqlalchemy import (
     BigInteger, Boolean, Column, Float, Integer, String, Table, MetaData,
     UniqueConstraint, and_, or_, create_engine, text as sql_text,
 )
 from databases import Database
 import ai_inference
+from context_scorer import score_text as _ctx_score
+from config import CONTEXT_WEIGHT_TOXIC, CONTEXT_WEIGHT_SUSPICIOUS
 from database import database as svc_database, violations_table
 from keywords import initialize_patterns as _init_keyword_patterns
 from models import MonitorRequest
@@ -138,6 +142,12 @@ PENDING_2FA_TTL = 300
 pending_2fa_clients: Dict[str, Dict[str, Any]] = {}
 pending_2fa_lock = asyncio.Lock()
 
+# Pending auth clients — kept alive between /login and /verify so the
+# MTProto connection (and its buffered acks) survive across both calls.
+PENDING_AUTH_TTL = 300
+_pending_auth_clients: Dict[str, Dict[str, Any]] = {}
+_pending_auth_lock = asyncio.Lock()
+
 # JWT
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 if not JWT_SECRET_KEY:
@@ -199,7 +209,7 @@ _BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 _WORD_FILE = os.path.join(_BACKEND_DIR, "data", "uz_negative_words.txt")
 NEGATIVE_KEYWORDS = load_negative_words(_WORD_FILE)
 KEYWORD_PATTERNS: List[re.Pattern] = []
-AI_NEGATIVE_SCORE_THRESHOLD = 0.85
+AI_NEGATIVE_SCORE_THRESHOLD = 0.80   # keep in sync with config.py
 
 LEET_MAP = {
     "a": r"[a4@]", "b": r"[b8]", "c": r"[c(\[]", "d": r"[d]",
@@ -221,6 +231,17 @@ def build_keyword_pattern(keyword: str) -> re.Pattern:
 
 
 def is_toxic_by_keywords(text: str) -> bool:
+    """main.py pipeline uchun keyword tekshiruvi.
+
+    Avval keywords.py dagi to'liq normalizer (Kirill→Latin, apostrof,
+    leet-speak) orqali urinadi.  Agar keywords.py KEYWORD_PATTERNS
+    bo'sh bo'lsa — main.py ning o'z patternlarini ishlatadi (fallback).
+    """
+    from keywords import is_toxic_by_keywords as _kw_check, KEYWORD_PATTERNS as _kw_patterns
+    # keywords.py — to'liq Uzbek normalizatsiya (Kirill→Latin, apostrof, leet)
+    if _kw_patterns:
+        return _kw_check(text)
+    # Fallback: main.py ning sodda patternlari
     text_lower = text.lower()
     return any(p.search(text_lower) for p in KEYWORD_PATTERNS)
 
@@ -417,9 +438,38 @@ async def lifespan(app: FastAPI):
     except Exception:
         logger.warning("Phone normalization migration failed — skipped", exc_info=True)
 
+    # ── Moderatsiya jadvallari (groups_settings, banned_users) ─────────────────
+    try:
+        from database import metadata as _mod_metadata, engine as _mod_engine
+        _mod_metadata.create_all(_mod_engine)
+        logger.info("Moderation tables (groups_settings, banned_users) verified")
+    except Exception as exc:
+        logger.warning("Moderation tables migration skipped: %s", exc)
+
+    # ── Aiogram bot (polling + kirish filtri) ─────────────────────────────────
+    from config import BOT_TOKEN, ENABLE_BOT_POLLING
+    if BOT_TOKEN and ENABLE_BOT_POLLING:
+        try:
+            from bot.dispatcher_setup import start_bot_polling
+            await start_bot_polling()
+            logger.info("Aiogram bot polling ishga tushdi (ENABLE_BOT_POLLING=true)")
+        except Exception:
+            logger.exception("Aiogram polling ishga tushmadi")
+    elif not BOT_TOKEN:
+        logger.info(
+            "BOT_TOKEN yo'q — /api/.../unban Telegram API ishlamaydi; "
+            "run_bot.py yoki .env da BOT_TOKEN o'rnating"
+        )
+
     yield
 
     # ── Shutdown ──────────────────────────────────────────────────────────────
+    if BOT_TOKEN and ENABLE_BOT_POLLING:
+        try:
+            from bot.dispatcher_setup import stop_bot_polling
+            await stop_bot_polling()
+        except Exception:
+            logger.exception("Bot polling to'xtatishda xatolik")
     async with active_clients_lock:
         for phone, client in active_clients.items():
             try:
@@ -436,6 +486,15 @@ async def lifespan(app: FastAPI):
                 pass
         pending_2fa_clients.clear()
 
+    async with _pending_auth_lock:
+        for _phone, _entry in list(_pending_auth_clients.items()):
+            try:
+                if _entry["client"].is_connected():
+                    await _entry["client"].disconnect()
+            except Exception:
+                pass
+        _pending_auth_clients.clear()
+
     try:
         await svc_database.disconnect()
     except Exception:
@@ -447,6 +506,9 @@ async def lifespan(app: FastAPI):
 # 5. App
 # ─────────────────────────────────────────────────────────────────────────────
 app = FastAPI(title="Telegram Sentiment Backend", lifespan=lifespan)
+
+from routers.chats_api_router import router as chats_api_router  # noqa: E402
+app.include_router(chats_api_router)
 
 
 def get_allowed_origins() -> List[str]:
@@ -533,8 +595,9 @@ class PhoneRequest(BaseModel):
 
 
 class MessageReason(str, Enum):
-    KEYWORD_MATCH = "keyword_match"
-    AI_SENTIMENT = "ai_sentiment"
+    KEYWORD_MATCH  = "keyword_match"   # Layer 1: regex keyword
+    CONTEXT_WEIGHT = "context_weight"  # Layer 2: contextual scoring
+    AI_SENTIMENT   = "ai_sentiment"    # Layer 3: XLM-RoBERTa
 
 
 class NegativeMessage(BaseModel):
@@ -975,9 +1038,22 @@ async def _do_analyze(data: AnalyzeRequest, phone: str) -> AnalyzeResponse:
 
     AI_BATCH_SIZE = 100
 
+    # O'zbek tili aniqlagich — moderation_service bilan bir xil mantiq
+    _UZ_MARKERS = re.compile(
+        r"o['''ʻʼ`ʹ′]"
+        r"|g['''ʻʼ`ʹ′]"
+        r"|sh|ch|ng"
+        r"|[ўқғҳ]",
+        re.IGNORECASE,
+    )
+
+    # ── Hybrid 3-layer batch pipeline ─────────────────────────────────────────
+    # Batch items are tagged with their Layer-2 score so the AI flush can apply
+    # a per-item adjusted threshold (suspicious items → lower threshold).
     async def _flush_ai_batch(
         batch_msgs: list,
         batch_texts: List[str],
+        ctx_scores: List[float],          # Layer-2 score per message
         negative_messages: List[NegativeMessage],
         negative_ids: Set[int],
     ) -> None:
@@ -985,20 +1061,35 @@ async def _do_analyze(data: AnalyzeRequest, phone: str) -> AnalyzeResponse:
             return
         try:
             results = await asyncio.to_thread(analyze_texts_batch, batch_texts)
-            for msg, result in zip(batch_msgs, results):
+            for msg, text, result, ctx_s in zip(batch_msgs, batch_texts, results, ctx_scores):
                 if msg.id not in negative_ids:
-                    score = float(result.get("score", 0.0))
-                    if (
-                        result.get("label", "").lower() == "negative"
-                        and score > AI_NEGATIVE_SCORE_THRESHOLD
-                    ):
+                    ai_score = float(result.get("score", 0.0))
+                    label    = result.get("label", "").lower()
+                    # O'zbek tilida AI past ball beradi — past threshold ishlatish
+                    is_uz   = bool(_UZ_MARKERS.search(text))
+                    base_t  = 0.65 if is_uz else AI_NEGATIVE_SCORE_THRESHOLD
+                    # Layer 2 suspicious flag → tighten AI threshold by 15 %
+                    threshold = base_t * 0.85 if ctx_s >= CONTEXT_WEIGHT_SUSPICIOUS else base_t
+
+                    is_negative = False
+                    reason = MessageReason.AI_SENTIMENT
+
+                    if label == "negative" and ai_score > threshold:
+                        is_negative = True
+                    elif is_uz and ctx_s >= 0.50:
+                        # AI O'zbek tilida ishonchsiz — Layer 2 signali
+                        # yetarlicha kuchli bo'lsa Layer 2 ga ishonish
+                        is_negative = True
+                        reason = MessageReason.CONTEXT_WEIGHT
+
+                    if is_negative:
                         negative_messages.append(
                             NegativeMessage(
                                 id=msg.id,
                                 text=msg.text,
-                                confidence=score,
+                                confidence=ai_score if reason == MessageReason.AI_SENTIMENT else ctx_s,
                                 sender_id=msg.sender_id,
-                                reason=MessageReason.AI_SENTIMENT,
+                                reason=reason,
                             )
                         )
                         negative_ids.add(msg.id)
@@ -1007,8 +1098,10 @@ async def _do_analyze(data: AnalyzeRequest, phone: str) -> AnalyzeResponse:
 
     async def analyze_operation():
         negative_messages: List[NegativeMessage] = []
-        uncertain_msgs: list = []
-        uncertain_texts: List[str] = []
+        # Layer-3 candidates: (message, Layer-2 score)
+        uncertain_msgs:   list        = []
+        uncertain_texts:  List[str]   = []
+        uncertain_scores: List[float] = []   # Layer-2 score per candidate
         negative_ids: Set[int] = set()
         analyzed_count = 0
 
@@ -1024,35 +1117,60 @@ async def _do_analyze(data: AnalyzeRequest, phone: str) -> AnalyzeResponse:
                     continue
                 analyzed_count += 1
 
+                # ── Layer 1: keyword regex ────────────────────────────────────
                 if is_toxic_by_keywords(msg.text):
                     if msg.id not in negative_ids:
                         negative_messages.append(
                             NegativeMessage(
-                                id=msg.id,
-                                text=msg.text,
-                                confidence=0.0,
+                                id=msg.id, text=msg.text, confidence=0.0,
                                 sender_id=msg.sender_id,
                                 reason=MessageReason.KEYWORD_MATCH,
                             )
                         )
                         negative_ids.add(msg.id)
+                    continue   # skip L2/L3 for this message
+
+                # ── Layer 2: contextual weight scoring ────────────────────────
+                ctx = _ctx_score(msg.text)
+
+                if ctx.score >= CONTEXT_WEIGHT_TOXIC:
+                    # Layer 2 confident — no AI needed
+                    if msg.id not in negative_ids:
+                        negative_messages.append(
+                            NegativeMessage(
+                                id=msg.id, text=msg.text, confidence=ctx.score,
+                                sender_id=msg.sender_id,
+                                reason=MessageReason.CONTEXT_WEIGHT,
+                            )
+                        )
+                        negative_ids.add(msg.id)
                 else:
+                    # Collect for Layer-3 AI batch; carry the ctx score forward
                     uncertain_msgs.append(msg)
                     uncertain_texts.append(msg.text)
+                    uncertain_scores.append(ctx.score)
+
                     if len(uncertain_texts) >= AI_BATCH_SIZE:
                         await _flush_ai_batch(
-                            uncertain_msgs, uncertain_texts, negative_messages, negative_ids
+                            uncertain_msgs, uncertain_texts, uncertain_scores,
+                            negative_messages, negative_ids,
                         )
-                        uncertain_msgs = []
-                        uncertain_texts = []
+                        uncertain_msgs   = []
+                        uncertain_texts  = []
+                        uncertain_scores = []
+
         except HTTPException:
             raise
         except Exception:
             logger.exception("Xabarlarni olishda xatolik")
             raise HTTPException(status_code=500, detail="Xabarlarni olishda xatolik yuz berdi")
 
+        # Flush remaining Layer-3 candidates
         if uncertain_texts:
-            await _flush_ai_batch(uncertain_msgs, uncertain_texts, negative_messages, negative_ids)
+            await _flush_ai_batch(
+                uncertain_msgs, uncertain_texts, uncertain_scores,
+                negative_messages, negative_ids,
+            )
 
         return AnalyzeResponse(
             analyzed_count=analyzed_count,
@@ -1122,6 +1240,8 @@ async def login(request: Request, data: LoginRequest):
 
     normalized_phone = normalize_phone(data.phone)
 
+    # Realistic device fingerprint — prevents Telegram from routing the code
+    # to the Telegram app on another device instead of delivering via SMS.
     client = TelegramClient(
         StringSession(),
         data.api_id,
@@ -1129,6 +1249,11 @@ async def login(request: Request, data: LoginRequest):
         timeout=TELETHON_CONNECTION_TIMEOUT,
         connection_retries=TELETHON_RETRIES,
         retry_delay=TELETHON_RETRY_DELAY,
+        device_model="Desktop",
+        system_version="Windows 10",
+        app_version="4.8.1",
+        lang_code="en",
+        system_lang_code="en-US",
     )
 
     if not await connect_with_retry(client, normalized_phone):
@@ -1137,8 +1262,46 @@ async def login(request: Request, data: LoginRequest):
             detail="Telegram serveriga ulanib bo'lmadi. 1-2 daqiqadan so'ng qayta urining",
         )
 
+    _login_ok = False
     try:
-        sent = await asyncio.wait_for(client.send_code_request(data.phone), timeout=10)
+        # Step 1: auth.SendCode — Telegram picks SMS or in-app notification.
+        # Using normalized_phone (digits only) ensures consistent formatting.
+        sent = await asyncio.wait_for(
+            client.send_code_request(normalized_phone),
+            timeout=30,
+        )
+        logger.info(
+            "SendCode result for %s: type=%s",
+            mask_phone(normalized_phone), type(sent.type).__name__,
+        )
+
+        # Step 2: if Telegram routed the code to the app, redirect to SMS via
+        # an explicit auth.ResendCode call.  Relying on force_sms=True inside
+        # send_code_request is unreliable across Telethon versions.
+        code_type: str
+        if isinstance(sent.type, TLSentCodeTypeApp):
+            try:
+                sent = await asyncio.wait_for(
+                    client(TLResendCodeRequest(
+                        phone_number=normalized_phone,
+                        phone_code_hash=sent.phone_code_hash,
+                    )),
+                    timeout=30,
+                )
+                code_type = "sms" if not isinstance(sent.type, TLSentCodeTypeApp) else "app"
+                logger.info(
+                    "ResendCode result for %s: type=%s",
+                    mask_phone(normalized_phone), type(sent.type).__name__,
+                )
+            except Exception as resend_exc:
+                logger.warning(
+                    "ResendCode failed for %s: %s — code remains in Telegram app",
+                    mask_phone(normalized_phone), type(resend_exc).__name__,
+                )
+                code_type = "app"
+        else:
+            code_type = "sms"
+
         session_string = client.session.save()
 
         encrypted_session = encrypt_session_string(session_string)
@@ -1171,29 +1334,66 @@ async def login(request: Request, data: LoginRequest):
             logger.exception("Database error during /login")
             raise HTTPException(status_code=500, detail="Ma'lumotlar bazasiga saqlashda xatolik")
 
-        logger.info("SMS code sent to %s", mask_phone(normalized_phone))
-        return {"status": "waiting_for_code", "phone_code_hash": sent.phone_code_hash}
+        # Keep client alive so /verify can reuse the same MTProto session.
+        # Disconnecting here would prevent buffered acks from being flushed,
+        # which can cause Telegram to silently not deliver the code.
+        async with _pending_auth_lock:
+            _old_auth = _pending_auth_clients.pop(normalized_phone, None)
+        if _old_auth and _old_auth["client"] is not client:
+            try:
+                if _old_auth["client"].is_connected():
+                    await _old_auth["client"].disconnect()
+            except Exception:
+                pass
+        async with _pending_auth_lock:
+            _pending_auth_clients[normalized_phone] = {
+                "client": client,
+                "expires_at": time.time() + PENDING_AUTH_TTL,
+            }
+        _login_ok = True
+
+        logger.info("Code sent to %s via %s", mask_phone(normalized_phone), code_type)
+        return {
+            "status": "waiting_for_code",
+            "phone_code_hash": sent.phone_code_hash,
+            "code_type": code_type,
+        }
 
     except asyncio.TimeoutError:
-        logger.error("SMS code request timeout for %s", mask_phone(normalized_phone))
+        logger.error("send_code_request timeout (30s) for %s", mask_phone(normalized_phone))
         raise HTTPException(
             status_code=504,
-            detail="Telegram javobi kelmadi. Internet ulanishingizni tekshiring",
+            detail="Telegram javobi kelmadi (30 soniya). Internet ulanishingizni tekshiring",
         )
+    except errors.FloodWaitError as exc:
+        logger.warning(
+            "FloodWait in /login for %s: %ds", mask_phone(normalized_phone), exc.seconds
+        )
+        raise HTTPException(
+            status_code=429,
+            detail=f"Juda ko'p urinish. {exc.seconds} soniyadan so'ng qayta urining",
+            headers={"Retry-After": str(exc.seconds)},
+        )
+    except errors.PhoneNumberInvalidError:
+        raise HTTPException(status_code=400, detail="Telegram bu telefon raqamini qabul qilmadi")
+    except errors.PhoneNumberBannedError:
+        raise HTTPException(status_code=403, detail="Bu telefon raqami Telegram tomonidan bloklangan")
     except errors.RPCError as exc:
-        logger.warning("Telegram RPC error for %s: %s", mask_phone(normalized_phone), exc)
-        raise HTTPException(status_code=502, detail="Telegram xatosi. Qayta urining")
+        logger.warning("Telegram RPC error for %s: %s (%s)", mask_phone(normalized_phone), type(exc).__name__, exc)
+        raise HTTPException(status_code=502, detail=f"Telegram xatosi: {type(exc).__name__}. Qayta urining")
     except HTTPException:
         raise
     except Exception:
         logger.exception("Unexpected error in /login for %s", mask_phone(normalized_phone))
         raise HTTPException(status_code=500, detail="Noma'lum xatolik yuz berdi")
     finally:
-        try:
-            if client.is_connected():
-                await client.disconnect()
-        except Exception as exc:
-            logger.warning("Failed to disconnect client in /login finally: %s", exc)
+        if not _login_ok:
+            # Error path — client was not stored in pending pool, disconnect it
+            try:
+                if client.is_connected():
+                    await client.disconnect()
+            except Exception as exc:
+                logger.warning("Failed to disconnect client in /login finally: %s", exc)
 
 
 @app.post("/verify")
@@ -1232,18 +1432,42 @@ async def verify(request: Request, data: VerifyRequest):
         logger.warning("API credentials mismatch for %s", mask_phone(normalized_phone))
         raise HTTPException(status_code=401, detail="API credentials mos kelmadi")
 
-    client = TelegramClient(
-        StringSession(session_string),
-        user["api_id"],
-        stored_api_hash,
-        timeout=TELETHON_CONNECTION_TIMEOUT,
-        connection_retries=TELETHON_RETRIES,
-        retry_delay=TELETHON_RETRY_DELAY,
+    # Reuse the still-connected auth client from /login when available.
+    # This is critical: the MTProto connection must stay alive long enough
+    # for Telegram to flush acks from auth.SendCode before we reconnect.
+    async with _pending_auth_lock:
+        _auth_pool_entry = _pending_auth_clients.get(normalized_phone)
+
+    _use_pending_client = (
+        _auth_pool_entry is not None
+        and _auth_pool_entry["expires_at"] > time.time()
+        and _auth_pool_entry["client"].is_connected()
     )
 
-    if not await connect_with_retry(client, normalized_phone):
-        raise HTTPException(status_code=502, detail="Telegram serveriga ulanib bo'lmadi")
+    if _use_pending_client:
+        client = _auth_pool_entry["client"]
+        logger.info("Reusing pending auth client for %s", mask_phone(normalized_phone))
+    else:
+        if _auth_pool_entry:
+            async with _pending_auth_lock:
+                _pending_auth_clients.pop(normalized_phone, None)
+        client = TelegramClient(
+            StringSession(session_string),
+            user["api_id"],
+            stored_api_hash,
+            timeout=TELETHON_CONNECTION_TIMEOUT,
+            connection_retries=TELETHON_RETRIES,
+            retry_delay=TELETHON_RETRY_DELAY,
+            device_model="Desktop",
+            system_version="Windows 10",
+            app_version="4.8.1",
+            lang_code="en",
+            system_lang_code="en-US",
+        )
+        if not await connect_with_retry(client, normalized_phone):
+            raise HTTPException(status_code=502, detail="Telegram serveriga ulanib bo'lmadi")
 
+    _verify_moved_to_2fa = False
     try:
         await asyncio.wait_for(
             client.sign_in(
@@ -1251,7 +1475,7 @@ async def verify(request: Request, data: VerifyRequest):
                 code=data.code,
                 phone_code_hash=data.phone_code_hash,
             ),
-            timeout=10,
+            timeout=30,
         )
         logger.info("SMS verification succeeded for %s", mask_phone(normalized_phone))
 
@@ -1265,6 +1489,7 @@ async def verify(request: Request, data: VerifyRequest):
                 "client": client,
                 "expires_at": time.time() + PENDING_2FA_TTL,
             }
+        _verify_moved_to_2fa = True
         logger.info("2FA required for %s — client saved, awaiting password", mask_phone(normalized_phone))
         return {"status": "2fa_required"}
     except errors.PhoneCodeInvalidError:
@@ -1293,6 +1518,12 @@ async def verify(request: Request, data: VerifyRequest):
         await client.disconnect()
         logger.exception("Unexpected error during /verify for %s", mask_phone(normalized_phone))
         raise HTTPException(status_code=500, detail="Noma'lum xatolik")
+    finally:
+        # Remove from pending auth pool on every path except 2FA
+        # (2FA moves the client to pending_2fa_clients instead)
+        if not _verify_moved_to_2fa:
+            async with _pending_auth_lock:
+                _pending_auth_clients.pop(normalized_phone, None)
 
     new_session = client.session.save()
     try:
@@ -1536,8 +1767,10 @@ async def analyze_start(
             if len(job_store) >= MAX_JOBS:
                 oldest = next(iter(job_store))
                 del job_store[oldest]
-            job_store[job_id] = {"status": "done", "result": cached, "error": None}
-        # task_id is an alias for job_id — both keys are returned for frontend compatibility
+            job_store[job_id] = {
+                "status": "done", "result": cached, "error": None,
+                "phone": normalized_phone,
+            }
         return {"status": "done", "job_id": job_id, "task_id": job_id}
 
     job_id = str(uuid_module.uuid4())
@@ -1545,10 +1778,12 @@ async def analyze_start(
         if len(job_store) >= MAX_JOBS:
             oldest = next(iter(job_store))
             del job_store[oldest]
-        job_store[job_id] = {"status": "queued", "result": None, "error": None}
+        job_store[job_id] = {
+            "status": "queued", "result": None, "error": None,
+            "phone": normalized_phone,
+        }
 
     background_tasks.add_task(_run_analysis_job, job_id, data, normalized_phone)
-    # task_id is an alias for job_id — both keys are returned for frontend compatibility
     return {"status": "queued", "job_id": job_id, "task_id": job_id}
 
 
@@ -1562,7 +1797,11 @@ async def analyze_status(
         job = job_store.get(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="Job topilmadi yoki muddati o'tgan")
-    return job
+    # Job egasini tekshirish — boshqa foydalanuvchi ko'ra olmasligi kerak
+    if job.get("phone") and job["phone"] != authenticated_phone:
+        raise HTTPException(status_code=403, detail="Bu tahlil natijasiga ruxsat yo'q")
+    # phone ni javobdan olib tashlash (foydalanuvchiga kerak emas)
+    return {k: v for k, v in job.items() if k != "phone"}
 
 
 async def _run_text_search(base_query, search_text: str, limit: int) -> list:

@@ -36,7 +36,7 @@ def load_model() -> bool:
             model = ORTModelForSequenceClassification.from_pretrained(ONNX_MODEL_PATH)
             tokenizer = AutoTokenizer.from_pretrained(ONNX_MODEL_PATH)
             _pipeline = hf_pipeline(
-                "text-classification",
+                "sentiment-analysis",
                 model=model,
                 tokenizer=tokenizer,
             )
@@ -76,8 +76,13 @@ def analyze_batch(texts: List[str]) -> List[Dict]:
     """Run *texts* through the loaded pipeline.  Raises if model is not loaded."""
     if _pipeline is None:
         raise ValueError("AI model is not loaded — call load_model() at startup.")
+    if not texts:
+        return []
     try:
         return _pipeline(texts, truncation=True, max_length=512)
     except Exception as exc:
-        logger.error("Batch inference failed: %s", exc)
+        logger.error(
+            "Batch inference failed (batch_size=%d, backend=%s): %s",
+            len(texts), _backend, exc,
+        )
         raise

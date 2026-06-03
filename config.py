@@ -54,6 +54,12 @@ AI_NEGATIVE_SCORE_THRESHOLD: float = float(os.getenv("AI_NEGATIVE_SCORE_THRESHOL
 # calibrated for Uzbek and tends to under-score genuine toxic content.
 AI_UZ_SCORE_THRESHOLD: float = float(os.getenv("AI_UZ_SCORE_THRESHOLD", "0.65"))
 
+# ── Hybrid pipeline: Layer 2 (Context Weight Scoring) ────────────────────────
+# score >= CONTEXT_WEIGHT_TOXIC    → Layer 2 is confident; skip AI (reason = context_weight).
+# score >= CONTEXT_WEIGHT_SUSPICIOUS → suspicious; lower the AI threshold by 15 %.
+CONTEXT_WEIGHT_TOXIC:      float = float(os.getenv("CONTEXT_WEIGHT_TOXIC",      "0.70"))
+CONTEXT_WEIGHT_SUSPICIOUS: float = float(os.getenv("CONTEXT_WEIGHT_SUSPICIOUS", "0.30"))
+
 # ── Telethon connection ───────────────────────────────────────────────────────
 TELETHON_CONNECTION_TIMEOUT: int = 30
 TELETHON_RETRIES: int = 3
@@ -73,6 +79,13 @@ PENDING_2FA_TTL: int = 300  # seconds a partial-auth client is kept alive
 WARN_LIMIT: int = int(os.getenv("WARN_LIMIT", "3"))
 BAN_AFTER_WARNS: int = int(os.getenv("BAN_AFTER_WARNS", "5"))
 MUTE_DURATION_SECONDS: int = int(os.getenv("MUTE_DURATION_SECONDS", "3600"))  # 1 hour
+
+# ── Aiogram moderatsiya boti (run_bot.py / FastAPI lifespan) ─────────────────
+BOT_TOKEN: str = os.getenv("BOT_TOKEN", "")
+# FastAPI ishga tushganda pollingni fon rejimida yoqish (run_bot.py bilan birga ishlatmaslik)
+ENABLE_BOT_POLLING: bool = os.getenv("ENABLE_BOT_POLLING", "true").lower() in (
+    "1", "true", "yes",
+)
 
 # ── Server ────────────────────────────────────────────────────────────────────
 PORT: int = int(os.getenv("PORT", "8001"))

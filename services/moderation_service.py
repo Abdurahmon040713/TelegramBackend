@@ -28,9 +28,13 @@ from telethon.tl.types import ChatBannedRights
 import ai_inference
 from config import (
     AI_NEGATIVE_SCORE_THRESHOLD, AI_UZ_SCORE_THRESHOLD,
+    CONTEXT_WEIGHT_TOXIC, CONTEXT_WEIGHT_SUSPICIOUS,
     BAN_AFTER_WARNS, MUTE_DURATION_SECONDS, WARN_LIMIT,
 )
+from context_scorer import score_text as _context_score
 from database import database, violations_table
+from services.ban_repository import add_banned_user
+from services.violations_repository import get_violation as _repo_get_violation
 from keywords import is_toxic_by_keywords
 
 logger = logging.getLogger(__name__)
@@ -43,12 +47,8 @@ _registry_lock = asyncio.Lock()
 # ── DB helpers ────────────────────────────────────────────────────────────────
 
 async def _get_violation(phone: str, chat_id: int, user_id: int):
-    return await database.fetch_one(
-        violations_table.select()
-        .where(violations_table.c.phone == phone)
-        .where(violations_table.c.chat_id == chat_id)
-        .where(violations_table.c.user_id == user_id)
-    )
+    """violations_repository.get_violation ga delegatsiya."""
+    return await _repo_get_violation(phone, chat_id, user_id)
 
 
 async def _increment_violation(phone: str, chat_id: int, user_id: int) -> int:
@@ -213,48 +213,93 @@ def _build_handler(client: TelegramClient, phone: str, chat_id: int):
             if msg.sender_id == me.id:
                 return
 
-            # ── Step 1: keyword scan (fast path) ─────────────────────────────
-            is_toxic = is_toxic_by_keywords(msg.text)
+            # ════════════════════════════════════════════════════════════════
+            # HYBRID 3-LAYER PIPELINE
+            # ════════════════════════════════════════════════════════════════
+
+            # ── Layer 1: Regex keyword scan (fastest — O(n_keywords)) ─────────
+            is_toxic       = is_toxic_by_keywords(msg.text)
+            detect_reason  = "keyword_match" if is_toxic else None
+
             logger.debug(
-                "Keyword scan: chat=%d msg_id=%d toxic=%s text_preview='%.60s'",
+                "L1-Keyword: chat=%d msg_id=%d toxic=%s preview='%.60s'",
                 chat_id, msg.id, is_toxic, msg.text,
             )
 
-            # ── Step 2: AI inference only when keyword scan says clean ────────
-            if not is_toxic and ai_inference.is_available():
-                try:
-                    results = await asyncio.to_thread(
-                        ai_inference.analyze_batch, [msg.text]
-                    )
-                    r     = results[0]
-                    score = float(r.get("score", 0.0))
-                    label = r.get("label", "").lower()
+            if not is_toxic:
+                # ── Layer 2: Contextual weight scoring ────────────────────────
+                # Pure Python regex — no I/O, runs in <1 ms.
+                ctx = _context_score(msg.text)
 
-                    # XLM-RoBERTa produces lower confidence scores for Uzbek text,
-                    # so apply a language-aware threshold: 0.65 for Uzbek, 0.80 globally.
-                    is_uz     = _is_likely_uzbek(msg.text)
-                    threshold = AI_UZ_SCORE_THRESHOLD if is_uz else AI_NEGATIVE_SCORE_THRESHOLD
-                    is_toxic  = label == "negative" and score > threshold
+                logger.debug(
+                    "L2-Context: chat=%d msg_id=%d score=%.2f signals=%s",
+                    chat_id, msg.id, ctx.score, ctx.signals,
+                )
 
+                if ctx.score >= CONTEXT_WEIGHT_TOXIC:
+                    # Layer 2 is confident — skip the expensive AI call.
+                    is_toxic      = True
+                    detect_reason = "context_weight"
                     logger.info(
-                        "AI result: chat=%d msg_id=%d | label=%-8s score=%.3f "
-                        "threshold=%.2f toxic=%-5s lang=%s",
-                        chat_id, msg.id,
-                        label, score, threshold, is_toxic,
-                        "uz" if is_uz else "other",
+                        "L2-Context TOXIC: chat=%d msg_id=%d score=%.2f "
+                        "signals=%s preview='%.60s'",
+                        chat_id, msg.id, ctx.score, ctx.signals, msg.text,
                     )
-                except Exception:
-                    logger.exception("AI inference error — using keyword result only")
+
+                elif ai_inference.is_available():
+                    # ── Layer 3: AI verification ──────────────────────────────
+                    # If Layer 2 raised a suspicious signal, tighten the AI
+                    # threshold by 15 % so the model catches borderline cases.
+                    is_uz   = _is_likely_uzbek(msg.text)
+                    base_t  = AI_UZ_SCORE_THRESHOLD if is_uz else AI_NEGATIVE_SCORE_THRESHOLD
+                    threshold = base_t * 0.85 if ctx.score >= CONTEXT_WEIGHT_SUSPICIOUS else base_t
+
+                    try:
+                        ai_results = await asyncio.to_thread(
+                            ai_inference.analyze_batch, [msg.text]
+                        )
+                        r      = ai_results[0]
+                        score  = float(r.get("score", 0.0))
+                        label  = r.get("label", "").lower()
+
+                        if label == "negative" and score > threshold:
+                            is_toxic      = True
+                            detect_reason = "ai_sentiment"
+                        elif is_uz and ctx.score >= 0.50:
+                            # AI O'zbek tilida ishonchsiz — Layer 2 signali
+                            # yetarlicha kuchli (>= 0.50) bo'lsa, AI ga emas
+                            # Layer 2 ga ishonish.
+                            is_toxic      = True
+                            detect_reason = "context_weight"
+                            logger.info(
+                                "L2-override (AI unreliable for Uzbek): "
+                                "chat=%d msg_id=%d ctx_score=%.2f ai_label=%s",
+                                chat_id, msg.id, ctx.score, label,
+                            )
+
+                        logger.info(
+                            "L3-AI: chat=%d msg_id=%d | label=%-8s score=%.3f "
+                            "threshold=%.2f toxic=%-5s lang=%s ctx_sus=%s",
+                            chat_id, msg.id,
+                            label, score, threshold, is_toxic,
+                            "uz" if is_uz else "other",
+                            ctx.score >= CONTEXT_WEIGHT_SUSPICIOUS,
+                        )
+                    except Exception:
+                        logger.exception(
+                            "L3-AI inference error — falling back to Layer 2 result "
+                            "(chat=%d msg_id=%d)", chat_id, msg.id,
+                        )
 
             if not is_toxic:
                 return
 
             logger.info(
-                "Toxic message detected: chat=%d msg_id=%d sender=%d",
-                chat_id, msg.id, msg.sender_id,
+                "Toxic message detected [%s]: chat=%d msg_id=%d sender=%d preview='%.80s'",
+                detect_reason, chat_id, msg.id, msg.sender_id, msg.text,
             )
 
-            # ── Step 3: delete the offending message ──────────────────────────
+            # ── Delete the offending message ───────────────────────────────────
             await _delete_message(client, chat_id, msg.id)
 
             # ── Step 4: increment counter and apply escalating punishment ──────
@@ -270,6 +315,13 @@ def _build_handler(client: TelegramClient, phone: str, chat_id: int):
                     await _set_violation_flags(
                         phone, chat_id, msg.sender_id, is_banned=True
                     )
+                    try:
+                        await add_banned_user(chat_id, msg.sender_id)
+                    except Exception:
+                        logger.exception(
+                            "banned_users yozuvi qo'shilmadi chat=%d user=%d",
+                            chat_id, msg.sender_id,
+                        )
                     await _send_notice(client, chat_id, msg.sender_id, "ban", warn_count)
 
             elif warn_count >= WARN_LIMIT:

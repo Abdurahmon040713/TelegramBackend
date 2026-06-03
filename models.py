@@ -94,13 +94,40 @@ class MonitorRequest(BaseModel):
 
 # ── Response models ───────────────────────────────────────────────────────────
 
+class ToggleRestrictionRequest(BaseModel):
+    is_enabled: bool
+
+
+class BannedUserRecord(BaseModel):
+    user_id: int
+    first_name: Optional[str] = None
+    username: Optional[str] = None
+    banned_at: Optional[str] = None
+
+
+class BannedListResponse(BaseModel):
+    """Frontend blacklist-panel kutadigan struktura."""
+    chat_id: int
+    restriction_mode: bool
+    banned_users: list[BannedUserRecord]
+    count: int
+
+
 class ViolationRecord(BaseModel):
     user_id: int
     warn_count: int
     is_muted: bool
     is_banned: bool
-    muted_until: Optional[datetime] = None
+    muted_until: Optional[str] = None
 
-    @field_serializer('muted_until')
-    def serialize_muted_until(self, v: Optional[datetime]) -> Optional[str]:
-        return v.isoformat() if v else None
+
+class ViolationsListResponse(BaseModel):
+    chat_id: int
+    violations: list[ViolationRecord]
+    count: int
+
+
+class MutedListResponse(BaseModel):
+    chat_id: int
+    muted_users: list[ViolationRecord]
+    count: int
