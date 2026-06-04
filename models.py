@@ -115,6 +115,8 @@ class BannedListResponse(BaseModel):
 
 class ViolationRecord(BaseModel):
     user_id: int
+    first_name: Optional[str] = None
+    username: Optional[str] = None
     warn_count: int
     is_muted: bool
     is_banned: bool

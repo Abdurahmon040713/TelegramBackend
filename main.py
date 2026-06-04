@@ -446,6 +446,19 @@ async def lifespan(app: FastAPI):
     except Exception as exc:
         logger.warning("Moderation tables migration skipped: %s", exc)
 
+    # ── violations jadvaliga first_name/username qo'shish (PostgreSQL) ────────
+    if "postgresql" in DATABASE_URL.lower():
+        for col in ("first_name VARCHAR", "username VARCHAR"):
+            try:
+                with engine.connect() as conn:
+                    conn.execute(sql_text(
+                        f"ALTER TABLE violations ADD COLUMN IF NOT EXISTS {col}"
+                    ))
+                    conn.commit()
+            except Exception:
+                pass
+        logger.info("violations: first_name/username columns verified")
+
     # ── Aiogram bot (polling + kirish filtri) ─────────────────────────────────
     from config import BOT_TOKEN, ENABLE_BOT_POLLING
     if BOT_TOKEN and ENABLE_BOT_POLLING:
@@ -2314,6 +2327,8 @@ async def get_violations(
             "violations": [
                 {
                     "user_id":    r["user_id"],
+                    "first_name": r["first_name"],
+                    "username":   r["username"],
                     "warn_count": r["warn_count"],
                     "is_muted":   r["is_muted"],
                     "is_banned":  r["is_banned"],

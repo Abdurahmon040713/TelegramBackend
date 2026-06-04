@@ -41,6 +41,8 @@ violations_table = Table(
     Column("phone", String, nullable=False, index=True),
     Column("chat_id", BigInteger, nullable=False, index=True),
     Column("user_id", BigInteger, nullable=False, index=True),
+    Column("first_name", String, nullable=True),
+    Column("username", String, nullable=True),
     Column("warn_count", Integer, default=0, nullable=False),
     Column("is_muted", Boolean, default=False, nullable=False),
     Column("is_banned", Boolean, default=False, nullable=False),
@@ -91,4 +93,12 @@ if DATABASE_URL.startswith("sqlite"):
             "first_name VARCHAR, username VARCHAR, banned_at VARCHAR, "
             "UNIQUE(chat_id, user_id))"
         ))
+        # violations jadvaliga first_name va username ustunlarini qo'shish (eski bazalar uchun)
+        for col in ("first_name", "username"):
+            try:
+                conn.execute(sql_text(
+                    f"ALTER TABLE violations ADD COLUMN {col} VARCHAR"
+                ))
+            except Exception:
+                pass  # ustun allaqachon mavjud
         conn.commit()

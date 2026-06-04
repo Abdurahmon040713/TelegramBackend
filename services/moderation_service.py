@@ -51,24 +51,37 @@ async def _get_violation(phone: str, chat_id: int, user_id: int):
     return await _repo_get_violation(phone, chat_id, user_id)
 
 
-async def _increment_violation(phone: str, chat_id: int, user_id: int) -> int:
-    """Atomically bump warn_count.  Returns the new value."""
+async def _increment_violation(
+    phone: str, chat_id: int, user_id: int,
+    *, first_name: str | None = None, username: str | None = None,
+) -> int:
+    """Atomically bump warn_count.  Returns the new value.
+
+    first_name va username har safar yangilanadi — foydalanuvchi
+    ismini o'zgartirsa keyingi violation da yangi nom saqlanadi.
+    """
     row = await _get_violation(phone, chat_id, user_id)
     if row is None:
         await database.execute(
             violations_table.insert().values(
                 phone=phone, chat_id=chat_id, user_id=user_id,
+                first_name=first_name, username=username,
                 warn_count=1, is_muted=False, is_banned=False,
             )
         )
         return 1
     new_count = row["warn_count"] + 1
+    update_vals: dict = {"warn_count": new_count}
+    if first_name:
+        update_vals["first_name"] = first_name
+    if username:
+        update_vals["username"] = username
     await database.execute(
         violations_table.update()
         .where(violations_table.c.phone == phone)
         .where(violations_table.c.chat_id == chat_id)
         .where(violations_table.c.user_id == user_id)
-        .values(warn_count=new_count)
+        .values(**update_vals)
     )
     return new_count
 
@@ -302,8 +315,23 @@ def _build_handler(client: TelegramClient, phone: str, chat_id: int):
             # ── Delete the offending message ───────────────────────────────────
             await _delete_message(client, chat_id, msg.id)
 
+            # ── Sender ma'lumotlarini olish ───────────────────────────────────
+            sender_first_name: str | None = None
+            sender_username: str | None = None
+            try:
+                sender = await msg.get_sender()
+                if sender:
+                    sender_first_name = getattr(sender, "first_name", None)
+                    sender_username = getattr(sender, "username", None)
+            except Exception:
+                pass  # Sender ma'lumoti olinmasa davom etish
+
             # ── Step 4: increment counter and apply escalating punishment ──────
-            warn_count = await _increment_violation(phone, chat_id, msg.sender_id)
+            warn_count = await _increment_violation(
+                phone, chat_id, msg.sender_id,
+                first_name=sender_first_name,
+                username=sender_username,
+            )
             logger.info(
                 "Violation recorded: chat=%d user=%d warn_count=%d",
                 chat_id, msg.sender_id, warn_count,

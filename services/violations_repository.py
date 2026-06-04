@@ -32,6 +32,8 @@ async def list_violations(phone: str, chat_id: int) -> list[dict[str, Any]]:
     return [
         {
             "user_id": r["user_id"],
+            "first_name": r["first_name"],
+            "username": r["username"],
             "warn_count": r["warn_count"],
             "is_muted": bool(r["is_muted"]),
             "is_banned": bool(r["is_banned"]),
@@ -53,6 +55,8 @@ async def list_muted_users(phone: str, chat_id: int) -> list[dict[str, Any]]:
     return [
         {
             "user_id": r["user_id"],
+            "first_name": r["first_name"],
+            "username": r["username"],
             "warn_count": r["warn_count"],
             "is_muted": True,
             "is_banned": bool(r["is_banned"]),
@@ -74,6 +78,8 @@ async def list_banned_violations(phone: str, chat_id: int) -> list[dict[str, Any
     return [
         {
             "user_id": r["user_id"],
+            "first_name": r["first_name"],
+            "username": r["username"],
             "warn_count": r["warn_count"],
             "is_muted": bool(r["is_muted"]),
             "is_banned": True,
